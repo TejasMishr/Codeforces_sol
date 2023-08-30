@@ -1,0 +1,1 @@
+{"name":"Local: anagram","url":"/Users/tejas_mishr/Desktop/cpp/string/anagram.cpp","tests":[{"id":1688983194561,"input":"tejas mishra\nmishra tejas","output":"tejas mishra and mishra tejas are anagrams"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/tejas_mishr/Desktop/cpp/string/anagram.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: sort","url":"/Users/tejas_mishr/Desktop/cpp/string/sort.c","tests":[{"id":1690440325829,"input":"tejas hello alpha alphaz sam","output":"Sorted strings:\nalpha\nalphaz\nhello\nsam\ntejas"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/tejas_mishr/Desktop/cpp/string/sort.c","group":"local","local":true}
