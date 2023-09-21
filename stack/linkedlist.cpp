@@ -43,6 +43,15 @@ void pop(){
     }
 }
 
+
+void peek(){
+    if(top==NULL) cout<<"Emplty Stack"<<endl;
+    
+    else {
+        struct node *temp=top;
+        cout<<"peek element: "<<temp->data<<endl;
+    }
+}
 void display(){
     if (top==NULL) cout<<"Empty Stack"<<endl;
     struct node *temp=top;
@@ -56,14 +65,19 @@ void display(){
 
 
 int main (){
+    int n;
+    cin>>n;
+    while(n--){
+        int val;cin>>val;
+        push(val);
+    }
     
-     push(1);
-     push(2);
-     push(4);
-     push(5);
+     
+     peek();
      display();
      pop();
      display();
+     peek();
   
   return 0;
 }
