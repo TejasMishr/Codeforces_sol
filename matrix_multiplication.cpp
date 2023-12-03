@@ -1,20 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-typedef long long ll;
-typedef vector<int> vi;
-typedef pair<int, int> pi;
-
-#define F first
-#define S second
-#define pb push_back
-#define mp make_pair
-#define len(s) (int)s.size()
-#define print(x) cout<<x<<'\n'
 #define REP(i,a,b) for (int i = a; i < b; i++)
-#define all(a) (a).begin(), (a).end()
-#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define mod 1000000007
+
+void addMatrices(int m, int n, int mat1[][n], int o, int p, int mat2[][p], int result[][p]) {
+    REP(i, 0, m){
+        REP(j, 0, p){
+            result[i][j] = mat1[i][j] + mat2[i][j];
+        }
+    }
+        
+            
+}
 
 int main() {
     int m, n, o, p;
@@ -32,18 +28,36 @@ int main() {
         return 0;
     }
     
+    // Matrix Multiplication
     int ans[m][p];
     memset(ans, 0, sizeof(ans)); 
     
     REP(i, 0, m) REP(j, 0, p) REP(k, 0, n) ans[i][j] += mat[i][k] * mat2[k][j];
     
-    
+    //Matrix Multiplication result
+    cout << "Matrix Multiplication Result:" << endl;
     REP(i, 0, m) {
-        REP(j, 0, p) {
-            cout << ans[i][j] << " ";
+        REP(j, 0, p) cout << ans[i][j] << " ";
+        cout << endl;
+    }
+    
+    //Matrix Addition
+    if (m != o || n != p) {
+        cout << "Matrices cannot be added!";
+        return 0;
+    
+    
+    int sum[m][n];
+    addMatrices(m, n, mat, o, p, mat2, sum);
+    
+    //Matrix Addition result
+    cout << "Matrix Addition Result:" << endl;
+    REP(i, 0, m) {
+        REP(j, 0, n) {
+            cout << sum[i][j] << " ";
         }
         cout << endl;
     }
-
+    }
     return 0;
 }

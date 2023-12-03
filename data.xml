@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <id>2022071001</id>
+        <name>AADRIKA BARNWAL</name>
+    </student>
+    <student>
+        <id>2022071002</id>
+        <name>AASTHA GUPTA</name>
+    </student>
+    <student>
+        <id>2022071003</id>
+        <name>ABHISHEK MISHRA</name>
+    </student>
+    <student>
+        <id>2022071004</id>
+        <name>ABHISHRESTHA TIWARI</name>
+    </student>
+    <student>
+        <id>2022071005</id>
+        <name>ADAMYA SINGH</name>
+    </student>
+    <student>
+        <id>2022071006</id>
+        <name>ADITYA KUMAR JAISWAL</name>
+    </student>
+    <student>
+        <id>2022071007</id>
+        <name>ADITYA SARASWAT</name>
+    </student>
+    <student>
+        <id>2022071008</id>
+        <name>ADITYA TRIPATHI</name>
+    </student>
+    <student>
+        <id>2022071009</id>
+        <name>AJAY KUMAR MAURYA</name>
+    </student>
+    <student>
+        <id>2022071010</id>
+        <name>AJITESH TIWARI</name>
+    </student>
+    <student>
+        <id>2022071011</id>
+        <name>AKANKSHA</name>
+    </student>
+    <student>
+        <id>2022071012</id>
+        <name>AMAN PATEL</name>
+    </student>
+    <student>
+        <id>2022071013</id>
+        <name>AMIT KUMAR SAHANI</name>
+    </student>
+    <student>
+        <id>2022071014</id>
+        <name>AMOSH SINGH</name>
+    </student>
+    <student>
+        <id>2022071015</id>
+        <name>ANANYA SHUKLA</name>
+    </student>
+    <student>
+        <id>2022071016</id>
+        <name>ANANYA VERMA</name>
+    </student>
+    <student>
+        <id>2022071017</id>
+        <name>ANISH SAHANI</name>
+    </student>
+    <student>
+        <id>2022071018</id>
+        <name>ANJUL SINGH</name>
+    </student>
+    <student>
+        <id>2022071019</id>
+        <name>ANKIT KUMAR DIWAKAR</name>
+    </student>
+    <student>
+        <id>2022071020</id>
+        <name>ANMOL TRIPATHI</name>
+    </student>
+    <student>
+        <id>2022071021</id>
+        <name>ANSHIKA VERMA</name>
+    </student>
+    <student>
+        <id>2022071022</id>
+        <name>ANSHUL CHAUDHARY</name>
+    </student>
+    <student>
+        <id>2022071023</id>
+        <name>ANSHUL SENGAR</name>
+    </student>
+    <student>
+        <id>2022071024</id>
+        <name>ANUJ KUMAR</name>
+    </student>
+    <student>
+        <id>2022071025</id>
+        <name>ANURAG KUMAR CHAUDHARY</name>
+    </student>
+    <student>
+        <id>2022071026</id>
+        <name>ARADHNA RAI</name>
+    </student>
+    <student>
+        <id>2022071027</id>
+        <name>ARCHIT SRIVASTAVA</name>
+    </student>
+    <student>
+        <id>2022071028</id>
+        <name>ARIN JEET SINGH</name>
+    </student>
+    <student>
+        <id>2022071029</id>
+        <name>ARPIT MANI TRIPATHI</name>
+    </student>
+    <student>
+        <id>2022071030</id>
+        <name>AYUSH PATEL</name>
+    </student>
+    <student>
+        <id>2022071031</id>
+        <name>CHANDRA PRAKASH KESHARI</name>
+    </student>
+    <student>
+        <id>2022071032</id>
+        <name>DEEPESH PATEL</name>
+    </student>
+    <student>
+        <id>2022071033</id>
+        <name>DEVANSH YADAV</name>
+    </student>
+    <student>
+        <id>2022071034</id>
+        <name>DIVYA AKARSH PATHAK</name>
+    </student>
+    <student>
+        <id>2022071035</id>
+        <name>DIVYANSH GUPTA</name>
+    </student>
+    <student>
+        <id>2022071036</id>
+        <name>GYAN PRAKASH KUSHWAHA</name>
+    </student>
+    <student>
+        <id>2022071037</id>
+        <name>HIMANI RAJPUT</name>
+    </student>
+    <student>
+        <id>2022071038</id>
+        <name>HIMANSHU VERMA</name>
+    </student>
+    <student>
+        <id>2022071039</id>
+        <name>ISHAN VATS</name>
+    </student>
+    <student>
+        <id>2022071040</id>
+        <name>KHUSHI JAISWAL</name>
+    </student>
+    <student>
+        <id>2022071041</id>
+        <name>KRISHNA NAND SINGH YADAV</name>
+    </student>
+    <student>
+        <id>2022071042</id>
+        <name>KUMARI NISHA</name>
+    </student>
+    <student>
+        <id>2022071043</id>
+        <name>MADHURI SINGH</name>
+    </student>
+    <student>
+        <id>2022071044</id>
+        <name>MANOJ KUMAR</name>
+    </student>
+    <student>
+        <id>2022071045</id>
+        <name>MOHAMMAD SHOAIB</name>
+    </student>
+    <student>
+        <id>2022071046</id>
+        <name>NIKHIL CHAND</name>
+    </student>
+    <student>
+        <id>2022071047</id>
+        <name>NISHCHAY KUMAR ARYA</name>
+    </student>
+    <student>
+        <id>2022071048</id>
+        <name>PIYUSH KUMAR TYAGI</name>
+    </student>
+    <student>
+        <id>2022071049</id>
+        <name>PRABHAT YADAV</name>
+    </student>
+    <student>
+        <id>2022071050</id>
+        <name>PRACHI PATEL</name>
+    </student>
+    <student>
+        <id>2022071051</id>
+        <name>PRANJAL SRIVASTAV</name>
+    </student>
+    <student>
+        <id>2022071052</id>
+        <name>PRINCE</name>
+    </student>
+    <student>
+        <id>2022071053</id>
+        <name>PRIYA YADAV</name>
+    </student>
+    <student>
+        <id>2022071054</id>
+        <name>PRIYANSHU KUMAR</name>
+    </student>
+    <student>
+        <id>2022071055</id>
+        <name>PRIYANSHU MISHRA</name>
+    </student>
+    <student>
+        <id>2022071056</id>
+        <name>PRIYANSHU SAHANI</name>
+    </student>
+    <student>
+        <id>2022071057</id>
+        <name>PRIYANSHU SRIVASTAVA</name>
+    </student>
+    <student>
+        <id>2022071058</id>
+        <name>RAUNAK KUMAR</name>
+    </student>
+    <student>
+        <id>2022071059</id>
+        <name>RUDRA DUBEY</name>
+    </student>
+    <student>
+        <id>2022071060</id>
+        <name>SAMARTH MISHRA</name>
+    </student>
+    <student>
+        <id>2022071061</id>
+        <name>SAMYAK JAIN</name>
+    </student>
+    <student>
+        <id>2022071062</id>
+        <name>SANGAM SINGH</name>
+    </student>
+    <student>
+        <id>2022071063</id>
+        <name>SANJEEV SHEKHAR</name>
+    </student>
+    <student>
+        <id>2022071064</id>
+        <name>SARVESH CHAUDHARY</name>
+    </student>
+    <student>
+        <id>2022071065</id>
+        <name>SHIVAM PANDEY</name>
+    </student>
+    <student>
+        <id>2022071066</id>
+        <name>SHIWANGI</name>
+    </student>
+    <student>
+        <id>2022071067</id>
+        <name>SHUCHIT SINGH</name>
+    </student>
+    <student>
+        <id>2022071068</id>
+        <name>SYED ANSAF ALI</name>
+    </student>
+    <student>
+        <id>2022071069</id>
+        <name>TEJAS MISHRA</name>
+    </student>
+    <student>
+        <id>2022071070</id>
+        <name>UDIT SIROHI</name>
+    </student>
+    <student>
+        <id>2022071071</id>
+        <name>UTKARSH CHAUDHARI</name>
+    </student>
+    <student>
+        <id>2022071072</id>
+        <name>VIJAY CHAND SHARMA</name>
+    </student>
+    <student>
+        <id>2022071073</id>
+        <name>VIJAY KUMAR SAKET</name>
+    </student>
+    <student>
+        <id>2022071074</id>
+        <name>VINAY CHAUHAN</name>
+    </student>
+    <student>
+        <id>2022071075</id>
+        <name>VINEET BHASHKAR</name>
+    </student>
+    <student>
+        <id>2022071076</id>
+        <name>VISHAL KOTAK</name>
+    </student>
+    <student>
+        <id>2022071077</id>
+        <name>VISHAL TIWARI</name>
+    </student>
+    <student>
+        <id>2022071078</id>
+        <name>VISHESH SINGH</name>
+    </student>
+    <student>
+        <id>2022071079</id>
+        <name>VIVEK MANI TRIPATHY</name>
+    </student>
+    <student>
+        <id>2022071080</id>
+        <name>YASH VARDHAN GOND</name>
+    </student>
+    <student>
+        <id>2022071081</id>
+        <name>YASHI KARDAM</name>
+    </student>
+    <student>
+        <id>2022071082</id>
+        <name>YOGESH SINGH</name>
+    </student>
+    <student>
+        <id>2022071083</id>
+        <name>YUVRAJ</name>
+    </student>
+    <student>
+        <id>2022071084</id>
+        <name>YUVRAJ RATAN</name>
+    </student>
+</students>
