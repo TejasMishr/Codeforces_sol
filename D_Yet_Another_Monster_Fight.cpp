@@ -1,43 +1,75 @@
-sort(vBar.begin(), Bar.end());
+//----------------> JAI SHREE RAM <------------- //
+#include <bits/stdc++.h>
+using namespace std;
+// Code Shortners
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+#define F first
+#define S second
+#define pb push_back
+#define mpp make_ pair
+#define len(s) (int)s.size()
+#define print(x) cout << x << endl;
+#define REP(i, a, b) for (int i = a; i < b; i++)
+#define all(a) (a).begin(), (a).end()
+#define fast                      \
+    ios_bfse::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+#define mod 1000000007;
 
-int maxArea = 1;
+void solve(){
+    ll n;
+    cin >> n;
 
-int c1=1;
+    vector<ll> a(n);
 
-for(int i=0;i<hBar.size();i++){
+    map<ll, ll> mp;
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
 
-if(i==0)cl++;
+    ll ans = 0;
+    vector<ll> left(n, 0);
+    ll mx = a[0], k = 1;
+    ll r = n - 2;
 
-if(i!=0){
+    for (int i = 1; i < n; i++)
+    {
+        left[i] = mx + k + r--;
+        if (mx + k < a[i]){
+            mx = a[i];
+            k = 1;
+        }
+        else k++;
+    }
 
-if(hBar[i]==hBar[i-1]+1)c1++; 
+    vector<ll> right(n, 0);
+    r = n - 2;
+    mx = a[n - 1], k = 1;
+    for (int i = n - 2; i >= 0; i--){
+        right[i] = mx + k + r--;
+        if (mx + k < a[i]){
+            mx = a[i];
+            k = 1;
+        }
+        else k++;
+    }
 
-} int c2=1;
+    ans = 1e19;
+    REP(i,0,n) ans = min(ans, max({left[i], a[i], right[i]}));
+    
 
-for(int j=0;j<vBar.size();j++){
-
-if(j==0) c2++;
-
-if(jl=e){
-
-I
-
-if(vBar[j]==vBar[j-1]+1)c2++; else c2=2;
-
-} if(c1==c2)(
-
-//cout<<cnt1<<" "<<cnt<<" "<<i<<" "<<j<<end]
-
-int area (c1) (c2);
-
-maxArea max(maxArea, area); break;
-
-} //cout<<cnt1<<" "<<cnt2<<" "<<i<<" "<<j<<endl;
-
-E
-
+    cout << ans << "\n";
 }
 
-}
+int main()
+{
+    ll t = 1;
+    // cin>>t;
 
-return maxArea;
+    while (t--)
+        solve();
+
+    return 0;
+}

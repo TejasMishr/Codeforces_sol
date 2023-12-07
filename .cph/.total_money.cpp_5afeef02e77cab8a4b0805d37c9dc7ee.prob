@@ -1,0 +1,1 @@
+{"name":"Local: total_money","url":"/Users/tejas_mishr/Desktop/cpp/total_money.cpp","tests":[{"id":1701849835851,"input":"26","output":"135"},{"id":1701849843678,"input":"4","output":"10"},{"id":1701849848378,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/tejas_mishr/Desktop/cpp/total_money.cpp","group":"local","local":true}
