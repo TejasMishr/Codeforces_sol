@@ -17,14 +17,23 @@ typedef pair<int, int> pi;
 #define mod 1000000007;
 int main(){
   ll t; cin>>t;
-  while(t--){
-      ll a,b,c,d;
-      cin>>a>>b>>c>>d;
-      if(b==c) cout<<b<<" "<<b<<" "<<b<<endl;
-      else {
-        if (b+c > d) cout<<b<<" "<<c<<" "<<d<<endl;
-        else cout<<b<<" "<<c<<" "<<(int)sqrt((pow(b,2)+pow(c,2)))<<endl;
-      }
-  }
+   while (t--) {
+        int n,k;cin>>n>>k;
+
+        vi a(n),b(n);
+
+        REP(i,0,n) cin >> a[i];
+        REP(i,0,n) cin >> b[i];
+        int ans = 0,res = 0,maxi = 0;
+
+        REP(j,0,n){
+            if (k==j) break;
+            maxi =max(b[j],maxi);
+            ans +=a[j];
+            int temp =ans+(k - 1 - j) * maxi ;
+            res=max(res,temp);
+        }
+        print(res);
+    }
   return 0;
 }

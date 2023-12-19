@@ -19,10 +19,12 @@ int main ()
 { 
   ll p,q,r;
   cin>>p>>q>>r;
-  p=p/r + (p%r!=0);
-  q=q/r + (q%r!=0);
-  cout<<p*q;
-  
+  ll len=p/r;
+  if (p%r!=0) len++;
+  ll bre=q/r ;
+  if (q%r) bre++;
+  ll ans=(len) * (bre);
+  cout<<ans;
 //   while(q>0){
    
 //     count++;

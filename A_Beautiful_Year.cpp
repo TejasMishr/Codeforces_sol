@@ -18,7 +18,7 @@ typedef pair<int, int> pi;
 int main ()
 { 
   int y;cin>>y;
-  
+  // int i=0;
   while(true){
     y++;
     int a=y/1000, b= ((y/100) % 10),c=((y/10) % 10), d = y%10;
@@ -27,6 +27,7 @@ int main ()
         cout<<y;
         return 0;
     }
+
 
   }
   return 0;
