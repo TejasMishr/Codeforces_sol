@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.embeddedhtml": "html",
         "iostream": "cpp",
         "__bit_reference": "cpp",
         "__bits": "cpp",
@@ -83,7 +84,8 @@
         "variant": "cpp",
         "vector": "cpp",
         "algorithm": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "towerofhanoi": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
