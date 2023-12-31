@@ -1,0 +1,589 @@
+
+// Solution for n=4
+
+#include <iostream>
+// void towerOfHanoi(int n, char source, char mid, char destination) {
+//     if (n == 1) {
+//         cout << "Move disk 1 from " << source << " to " << destination << endl;
+//         return;
+//     }
+
+//     towerOfHanoi(n - 1, source, destination, mid);
+//     cout << "Move disk " << n << " from " << source << " to " << destination << endl;
+//     towerOfHanoi(n - 1, mid, source, destination);
+// }
+int f(int x){
+    if(x<2) return 1;
+    else return f(x-1) + f(x-2);
+}
+int main() {
+
+    f(5);
+    return 0;
+}
+
+
+
+
+void insertNode(Node **head, int newData) {
+    Node *newNode = new Node();
+    newNode->data = newData;
+    newNode->next = (*head);
+    (*head) = newNode;
+}
+
+
+
+
+
+
+
+ 
+bool checkPalindrome(Node *head) {
+    Node *temp = head;
+    stack<int> s;
+
+    // Pushing the elements of the linked list to the stack.
+    while (temp != NULL) {
+        s.push(temp->data);
+        temp = temp->next;
+    }
+
+    /* Iterating the list again and checking if the top of the stack 
+     is the same as the current element or not. */
+    while (head != NULL) {
+        // getting the top element for comparison.
+        int i = s.top();
+        s.pop();
+
+        // Checking the top element and current element are the same or not.
+        if (head->data != i) return false;
+        head = head->next;
+    }
+    return true;
+}
+
+
+// Quick Sort
+//low and high are the lowest & highest index of the array/subarray respectively
+function partition(array, low, high) {
+  
+   // selecting the rightmost element as pivot
+   pivot = array[high]
+  
+   //setting the left pointer to point at the lowest index initially
+   left = low
+ 
+   //setting the left pointer to point at the lowest index initially
+   right = high - 1;
+ 
+   //running a loop till left is smaller than right
+   while(left <= right)
+ 
+       //incrementing the value of left until the value at left'th
+     //index is smaller than pivot
+       while(array[left] < pivot)
+           left = left + 1
+       end while
+ 
+       //decrementing the value of right until the value at right'th
+       //index is greater than pivot
+       while(array[right] > pivot)
+           right = right - 1
+       end while
+ 
+       if(left < right)
+           //swapping the elements at left & right index
+           swap(array[left], array[right])
+       end if
+ 
+   end while 
+    
+   // swapping pivot with the element where left and right meet
+   swap(array[left], array[high])
+   
+   // return the partition point
+   return left
+ 
+end function
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+
+/* Function to swap two variables by reference */
+void swapnumber(int *x, int *y) {
+  int t;
+  t = *x;
+  *x = *y;
+  *y = t;
+}
+
+int main() {
+  int a, b; cin >> a >> b;
+  cout << a << b <<endl;
+
+  // Pass reference
+  swapnumber( &a, &b);
+  printf("After swapping: a=%d b=%d\n", a, b);
+  return 0;
+}
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+// create a class
+class Room {
+
+   public:
+    double l,b,h;
+
+
+    double calculateArea() return l * b;
+    
+    double calculateVolume() return l * b * h;
+    
+};
+
+int main() {
+
+    
+    Room room1; // create object of Room class
+
+    // assign values to data members
+    room1.l = 42.5;
+    room1.b = 30.8;
+    room1.h = 19.2;
+
+    // calculate and display the area and volume of the room
+    cout << "Area of Room =  " << room1.calculateArea() << endl;
+    cout << "Volume of Room =  " << room1.calculateVolume() << endl;
+
+    return 0;
+}
+
+
+
+
+
+
+// --------> Inside Class <-------- //
+class MyClass {
+public:
+    // Member function declaration 
+    void displayMessage() cout<<"Hello from inside the class!"<< endl;
+};
+
+int main() {
+    MyClass obj; // Create an object of the class
+    obj.displayMessage(); // Call the member function
+    return 0;
+}
+
+
+// --------> Outside Class <-------- //
+class MyClass {
+public:
+    // Member function declaration inside the class
+    void displayMessage();
+};
+
+// Member function outside the class
+void MyClass::displayMessage() {
+    cout << "Hello from outside the class!" << endl;
+}
+
+int main() {
+    
+    MyClass obj; // Create an object of the class
+    obj.displayMessage(); // Call the member function
+
+    return 0;
+}
+
+
+
+
+
+/* How to declare array and how to allocate
+the memory to for array? Write a program to display
+elements of array using pointer to array of integers */
+
+#include <iostream>
+#include <cstdlib> //For malloc and free
+
+int main() {
+
+    int *data;
+    // Allocate memory for array of 5 integers
+    data = (int*)malloc(5 * sizeof(int)); 
+
+    if (data == nullptr) {
+        cerr << "Memory allocation failed." << endl;
+        return 1;
+    }
+
+    cout << "Enter elements: ";
+    REP(i,0,5) cin >> *(data + i);
+    REP(i,0,5) cout << *(data + i) << endl;
+    
+    free(data);
+
+    return 0;
+}
+
+
+
+/*
+The new operator is used to dynamically allocate memory for a variable or an object on the heap. 
+It returns the address of the allocated memory.
+*/
+
+/*
+The delete operator is used to deallocate memory that was previously allocated using new. 
+It frees up the memory on the heap.
+*/
+
+int main() {
+    int* ptr = new int; // Dynamically allocate memory for an integer
+    *ptr = 42; // Assign value to the dynamically allocated integer
+    cout << "Dynamically allocated integer: " << *ptr << endl; // Print the value
+    delete ptr;  // free the allocated memory using delete
+
+    return 0;
+}
+
+/*
+new[] Operator: Allocates memory for an array.
+delete[] Operator: Deallocates memory for an array.
+*/
+syntax :
+
+int* arr = new int[5];  // Allocate memory for an array of 5 integers
+
+delete[] arr;  // Free the allocated memory for the array
+
+
+
+
+
+/*
+Ques : With suitable example, describe effect of ++ & -- operators used with pointer in pointer arithmetic
+
+Pointer arithmetic in C++ involves using the ++ (increment) and -- (decrement) operators with pointers. 
+These operators can be applied to pointers to move them to the next or previous memory location, 
+depending on the data type they point to.
+
+*/
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    
+    int* ptr = arr; //Declare a pointer to the first element of the array
+
+    cout << "Value at the current position: " << *ptr << endl;
+    
+    ++ptr; //move the pointer to the next element
+    cout << "Value after incrementing: " << *ptr <<  endl;
+
+    --ptr; // move the pointer back to the previous element
+    cout << "Value after decrementing: " << *ptr << endl;
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <cmath>
+
+class CircularPrimeChecker {
+private:
+    bool isPrime(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= sqrt(num); ++i) if (num % i == 0) return false;
+        return true;
+    }
+
+    int rotateDigits(int num) {
+        int lastDigit = num % 10 , temp = num / 10;  // Extract the last digit and remove last dig
+        int numDigits = log10(temp) + 1; // Count the remaining digits
+        int pow10 = pow(10, numDigits);   // Calculate the power of 10
+        return lastDigit * pow10 + temp;  // Rotate the digits 
+    }
+
+public:
+    bool isCircularPrime(int num) {
+        int rotatedNum = num;
+        do {
+            if (!isPrime(rotatedNum)) return false;
+            rotatedNum = rotateDigits(rotatedNum);
+        } 
+        while(rotatedNum != num);
+
+        return true;
+    }
+};
+
+int main() {
+    CircularPrimeChecker circularPrimeChecker;
+    int n;cin>>n;
+
+    if (circularPrimeChecker.isCircularPrime(n)) cout <<n<< " is a circular prime." << endl;
+    else cout << n << " is not a circular prime." << endl;
+
+    return 0;
+}
+
+
+
+
+
+/*
+In the case of variable scopes, some names of identifiers are hidden among different scopes. 
+In these cases, a scope resolution operator is used to access and identify those hidden identifiers.
+
+In other words, a scope resolution operator "::" is used to specify the context to which a particular identifier refers. 
+For example, we have two integer variables declared as position one of them is declared globally, 
+and another one is declared locally, here both of them have different scopes, 
+and to access the global variable position inside the local scope resolution operator "::" is used as follows:
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int position = 50; // Global variable 
+int main(){
+   int position =60; // Local variable 
+   cout << "Value of the variable position in local scope: " << position <<"\n"; // In local scope.
+   cout << "Value of the variable position in Global scope: " << ::position << "\n";  //In global scope.
+}
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// Define a student class.
+class Student{
+    static string name;
+    public:
+    static int roll_no;
+    void printName();
+    void printRollNo();
+};
+
+// Initialize the static variables.
+string Student::name = "Ramandeep";
+int Student::roll_no = 42;
+
+
+void Student::printName(){
+    cout << "Name of the student is: " << Student::name << "\n";
+}
+
+void Student::printRollNo(){
+  cout << "Roll No of the student is: " << Student::roll_no << "\n";
+}
+
+// Driver program.
+int main(){
+   
+     Student st;
+     
+     // Print the name of the student.
+     st.printName();
+     
+     // Print the roll no of the student.
+     st.printRollNo();
+     
+     // Value of the static variables.
+     cout << "Roll_no of the student: " << Student::roll_no << "\n";
+}
+
+
+
+/*
+you can create an array of objects just like you create an array of primitive data types. 
+Each element in the array is an instance of the class. Objects in the array are initialized 
+using the class's constructor. 
+*/
+
+class Student {
+  public:
+    // Constructor to initialize the object
+    Student(string name, int age) : name(name), age(age) {}
+
+    // Member function to display student information
+    void displayInfo() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+    
+  private:
+    string name;
+    int age;
+};
+
+int main() {
+    
+    const int len = 3; // Create an array of Student objects of length 3
+    Student students[len] = {
+        Student("Alice", 20),
+        Student("Bob", 22),
+        Student("Charlie", 21)
+    };
+
+    // Access and display information for each student
+    for (int i = 0; i < arraySize; ++i) {
+        cout << "Student " << i + 1 << ": ";
+        students[i].displayInfo();
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+/*
+A static member function is a function that belongs to the class rather than an instance of the class. 
+It can be called on the class itself, without needing to create an object of the class. 
+Static member functions have access only to static data members and other static member functions.
+*/
+class MathOperations {
+public:
+    // Static member function
+    static int add(int a, int b) {
+        return a + b;
+    }
+};
+
+int main() {
+   
+    int result = MathOperations::add(5, 3);  // Calling the static member function without creating an object
+
+    cout << "Result of addition: " << result << endl;
+
+    return 0;
+}
+
+
+/*
+Static data members are shared among all instances of a class. 
+They are declared with the static keyword and are accessed using the class name, not through instances of the class.
+These members are shared across all objects of the class.
+*/
+class Counter {
+public:
+   
+    static int count;  // Static data member
+
+    // Constructor increments the count
+    Counter() {
+        ++count;
+    }
+
+    // Static member function to get the count
+    static int getCount() {
+        return count;
+    }
+};
+
+// Initializing the static data member outside the class
+int Counter::count = 0;
+
+int main() {
+     
+    Counter obj1, obj2, obj3; // Creating objects of the Counter class
+
+    // Accessing the static data member using the class name
+    cout << "Total count: " << Counter::getCount() << endl;
+
+
+
+
+//return object from function
+
+class Student {
+   public:
+    double marks1, marks2;
+};
+
+// function that returns object of Student
+Student createStudent() {
+    Student student;
+
+    // Initialize member variables of Student
+    student.marks1 = 96.5;
+    student.marks2 = 75.0;
+
+    cout << "Marks 1 = " << student.marks1 << endl;
+    cout << "Marks 2 = " << student.marks2 << endl;
+
+    return student;
+}
+
+int main() {
+    Student student1;
+
+    student1 = createStudent();
+
+    return 0;
+}
+
+
+/*C++ program for unary minus (-) operator overloading.*/
+
+class NUM{
+    private:
+        int n;
+         
+    public:
+        //function to get number
+        void getNum(int x){
+            n=x;
+        }
+        //function to display number
+        void dispNum(void){
+            cout << "value of n is: " << n;
+        }
+        //unary - operator overloading
+        void operator - (void){
+            n = -n;
+        }
+};
+
+int main(){
+    NUM num;
+    num.getNum(10);
+    -num;
+    num.dispNum();
+    cout << endl;
+    return 0;
+}
+
