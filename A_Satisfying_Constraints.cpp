@@ -92,7 +92,7 @@ using namespace std;
 #define all(a) (a).begin(), (a).end()
 #define fast ios_bfse::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define mod 1000000007
-
+#define INF 1e9
 //---------------------------------------------------------------------------------------------------------------------
 
 /*
@@ -367,13 +367,32 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int main(){
-  int n, k; cin >> n >> k;
-	vi a(n+1);
-    REPE(i,1,n) cin >> a[i];
-	int check = a[k];
-	int ans = 0;
-	REPE(i,1,n) if (check <= a[i]&&a[i]>0) ans++;
-	print(ans);
-  return 0;
+
+
+int solve(int n) {
+    int mini = -100;
+    int maxi = INF;
+    vi vec;
+
+    for (int i = 0; i < n; i++) {
+        int a,x;cin>>a>>x;
+        if(a == 1) mini =max(mini, x);
+        else if(a == 2) maxi =min(maxi, x);
+        else vec.push_back(x);
+    }
+
+    int res = maxi - mini;
+    res++;
+    for (int i : vec) if(i >= mini && i <= maxi) res--;
+
+    return max(res, 0);
+}
+
+int main() {
+    int t;cin >> t;
+    while (t--) {
+        solve();
+    }
+
+    return 0;
 }

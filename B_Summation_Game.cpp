@@ -65,7 +65,7 @@ using namespace std;
 #define ub upper_bound
 #define lb lower_bound
 #define endl "\n"
-#define ll long long
+#define int long long
 #define lli long long int
 #define vi vector<int>
 #define vc vector<char>
@@ -92,7 +92,7 @@ using namespace std;
 #define all(a) (a).begin(), (a).end()
 #define fast ios_bfse::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define mod 1000000007
-
+#define INF 1e9
 //---------------------------------------------------------------------------------------------------------------------
 
 /*
@@ -367,13 +367,41 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int main(){
-  int n, k; cin >> n >> k;
-	vi a(n+1);
-    REPE(i,1,n) cin >> a[i];
-	int check = a[k];
-	int ans = 0;
-	REPE(i,1,n) if (check <= a[i]&&a[i]>0) ans++;
-	print(ans);
-  return 0;
+
+
+#define int long long
+int32_t main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+       int n,k,x;cin>>n>>k>>x;vi vec(n);
+       REP(i,0,n) cin >> vec[i];
+       sort(vec.begin(), vec.end());
+       vi tot(n);
+       int tot1 = 0;
+
+    REP(i,0,n){
+        tot1 += vec[i];
+        tot[i] = tot1;
+    }
+
+    int ans;
+    int right = n-1;
+    int left = right - x;
+    left++;
+
+    ans =(left <= 0) ? -1 * tot[right] : (2 * tot[left - 1] - tot[right]);
+    REP(i,max(n - k, 0LL),n){
+        if (i == 0) {ans = max(ans, 0LL);continue;}
+        right = i - 1;
+        left = right - x + 1;
+
+        ans = (left <= 0) ? max(ans, -1 * tot[right]) : max(ans, 2 * tot[left - 1] - tot[right]);
+
+    }
+    print(ans)
+    }
+
+    return 0;
 }

@@ -84,7 +84,7 @@ using namespace std;
 #define ppb pop_back
 #define pf  push_front
 #define ppf pop_front
-#define mp make_ pair
+#define mpp make_ pair
 #define len(s) (int)s.size()
 #define print(x) cout<<x<<endl;
 #define REP(i,a,b) for( int i = a; i < b; i++)
@@ -368,12 +368,42 @@ ll nCrModPFermat(ll n,ll r, ll p){
 */
 //---------------------------------------------------------------------------------------------------------------------
 int main(){
-  int n, k; cin >> n >> k;
-	vi a(n+1);
-    REPE(i,1,n) cin >> a[i];
-	int check = a[k];
-	int ans = 0;
-	REPE(i,1,n) if (check <= a[i]&&a[i]>0) ans++;
-	print(ans);
+  ll t; cin>>t;
+  while(t--){
+    int n;
+    cin >> n;
+
+    vi vec(n);
+    REP(i,0,n) cin >>vec[i];
+    vi div;
+    
+    REPE(i,1,sqrt(n)) {
+        (n % i == 0) ? (div.push_back(i), (n/i != i) ? div.push_back(n/i) : void()) : void();
+
+    }
+
+    int res = 1;
+
+    for (int x : div) {
+        if(n==x) continue;
+        map<int,vi> mp;
+        REPE(j,1,n){
+            int pos=j%x;
+            mp[pos].push_back(vec[j - 1]);
+        }
+
+        int tot = 0;
+        for (auto x : mp) {
+            sort(x.second.begin(), x.second.end());
+            adjacent_difference(x.second.begin(), x.second.end(), x.second.begin());
+            tot = accumulate(next(x.second.begin()), x.second.end(), tot, gcd<int, int>);
+        }
+
+        res += (tot != 1) ? 1 : 0;
+
+        
+    }
+    print(res);
+  }
   return 0;
 }
