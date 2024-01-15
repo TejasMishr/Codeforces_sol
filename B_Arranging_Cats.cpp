@@ -84,7 +84,7 @@ using namespace std;
 #define ppb pop_back
 #define pf  push_front
 #define ppf pop_front
-#define mpp make_ pair
+#define mp make_ pair
 #define len(s) (int)s.size()
 #define print(x) cout<<x<<endl;
 #define REP(i,a,b) for( int i = a; i < b; i++)
@@ -367,31 +367,31 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
+
 int main() {
-    ll t;
+    int t;
     cin >> t;
+
     while (t--) {
-        ll n;
+        int n;
         cin >> n;
-        vi vec(n);
-        REP(i, 0, n) cin >> vec[i];
-        if (n == 1) {
-            cout << "1" << endl;
-            continue;
+        vi temp(n); 
+        string s1, s2;
+        cin >> s1 >> s2;
+        int d;
+        for(int i=0;i<n;i++){
+            d= s2[i] - s1[i];
+            temp[i] = d;
         }
-        ll ans = 0;
-        for (ll i = 1; i <= n; i++) {
-            if (n % i == 0) {
-                ll gc = 0;
-                for (ll j = 0; j < i; j++) {
-                    for (ll k = j + i; k < n; k += i) {
-                        gc = __gcd(gc, abs(vec[k] - vec[k - i]));
-                    }
-                }
-                if (gc != 1) ans++;
-            }
-        }
-        print(ans);
+       
+       int x = 0, y = 0;
+       
+       
+       for(int i=0;i<n;i++) (temp[i] < 0) ? (x -= temp[i]) : ((temp[i] > 0) ? (y += temp[i]) : 0);
+       int maxi = max(x, y);
+
+       cout<<maxi<<endl;
     }
+
     return 0;
 }

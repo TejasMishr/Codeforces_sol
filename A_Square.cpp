@@ -84,7 +84,7 @@ using namespace std;
 #define ppb pop_back
 #define pf  push_front
 #define ppf pop_front
-#define mpp make_ pair
+#define mp make_ pair
 #define len(s) (int)s.size()
 #define print(x) cout<<x<<endl;
 #define REP(i,a,b) for( int i = a; i < b; i++)
@@ -367,31 +367,18 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int main() {
-    ll t;
-    cin >> t;
+int main(){
+  ll t; cin>>t;
+
     while (t--) {
-        ll n;
-        cin >> n;
-        vi vec(n);
-        REP(i, 0, n) cin >> vec[i];
-        if (n == 1) {
-            cout << "1" << endl;
-            continue;
-        }
-        ll ans = 0;
-        for (ll i = 1; i <= n; i++) {
-            if (n % i == 0) {
-                ll gc = 0;
-                for (ll j = 0; j < i; j++) {
-                    for (ll k = j + i; k < n; k += i) {
-                        gc = __gcd(gc, abs(vec[k] - vec[k - i]));
-                    }
-                }
-                if (gc != 1) ans++;
-            }
-        }
-        print(ans);
+        int x[4], y[4];
+        REP(i,0,4) cin >> x[i] >> y[i];
+        
+        sort(x, x + 4);
+        sort(y, y + 4);
+        int s = max(x[2] - x[1], y[2] - y[1]);
+        print(s * s);
     }
+
     return 0;
 }
