@@ -372,16 +372,32 @@ int main(){
   while(t--){
       int n;cin>>n;
     //   vi vec(n),arr(n);
-      int x;string s;
-      REP(i,0,n) cin>>x>>s;
-      int mini1,mini2;
-      int x11=INT_MAX,x01=INT_MAX,x10=INT_MAX;
-    //   if (s == "11") x11 = min(x11, x);
-    //   if (s == "01") x01 = min(x01, x);
-    //   if (s == "10") x10 = min(x10, x);
-    //   int ans = min(x11, x10 + x01);
-    //   if(ans == INT_MAX) {print(-1);}
-    //   else print(ans);
+      ll c;string s;
+      vll v1,v2,v3;
+      REP(i,0,n){
+         cin>>c>>s;
+        //  if(n==1) {print(x);continue;}
+
+        // if(n==2 && s=="11") {print(x);break;}
+        if(s=="01")v1.push_back(c);
+        else if(s=="10")v2.push_back(c);
+        else if(s=="11")v3.push_back(c);
+      }
+      // REP(i,0,4) print((vec[i]));
+      // if (vec[3] != mod && vec[1] == mod && vec[2] == mod && vec[0] == mod) {
+      //       print(vec[3]);
+      //       continue;
+      //   }
+      sort(all(v3));
+      sort(all(v2));
+      sort(all(v1));
+
+      ll sum1 = 0, sum2 = 0;
+
+      (v3.size() && v2.size() && v1.size()) ? cout << min(v1[0] + v2[0], v3[0]) << endl : (v3.size()) ? cout << v3[0] << endl :
+      (v2.size() && v1.size()) ? cout << v1[0] + v2[0] << endl : cout << "-1" << endl;
+
+
 
 
   }
