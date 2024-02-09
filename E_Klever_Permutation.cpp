@@ -369,26 +369,19 @@ ll nCrModPFermat(ll n,ll r, ll p){
 //---------------------------------------------------------------------------------------------------------------------
 int main(){
   ll t; cin>>t;
+  int a[300000];
   while(t--){
-    int n,k;cin>>n>>k;
-    vi vec(n),arr(k);
-    arr[1] = 1;
-    arr[0] = n; 
-    REP(i,0,k){
-      int temp, chal=0;
-      int mini=n+1, maxi = 0;
-      temp = (i % 2 == 0 ? -1 : 1);
-      for (int j=i; j<n; j+=k) {
-        vec[j] = arr[i] + temp*chal;
-        chal++;
-        mini = min(mini,vec[j]);
-        maxi = max(maxi,vec[j]);
-      }
-      if (temp==-1) if(2+i<k) arr[i+2] =mini-1;
-      else if(2+i<k) arr[i+2] = maxi+1;
-    }
-    for (auto x :vec) cout<<x<<" ";
-    cout<<endl;
+      int n,k;
+      cin>>n>>k;
+      int low=1,high=n;
+      REPE(j,1,k){
+        for(int m=j;m<=n;m+=k){
+          a[m]=(m % 2 == 0) ? high-- : low++;
+
+			}
+		}
+		REPE(j,1,n) cout<<a[j]<<" ";
+		cout<<endl;
   }
   return 0;
 }
