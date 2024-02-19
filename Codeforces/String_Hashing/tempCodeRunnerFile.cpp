@@ -11,13 +11,4 @@ long long get_hash(string s){
 int main(){
     cout<<get_hash("ab")<<endl;
     cout<<get_hash("dbc")<<endl;
-    // dbc
-    // h=0
-    // h= 0 * 31 + 4
-    // h= 4*31 + 2
-    // h= 126 * 31 +3
-
-    // output = 3909
-
-
 }
