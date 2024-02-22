@@ -85,7 +85,7 @@ const int N = 200010;
 #define ppb pop_back
 #define pf  push_front
 #define ppf pop_front
-#define mp make_ pair
+#define mpp make_ pair
 #define len(s) (int)s.size()
 #define print(x) cout<<x<<endl;
 #define REP(i,a,b) for( int i = a; i < b; i++)
@@ -379,29 +379,29 @@ int dig(int num) {
 }
 
 int main() {
-    ll t;
-    cin >> t;
-
+    ll t;cin>>t;
     while (t--) {
-        const int N = 200010;
-        vi tot(N);
-
-        REP(i, 1, N) tot[i] = dig(i) + tot[i - 1];
-        int n;cin>>n;
-        vi vec(n);
-        REP(i,0,n) cin>>vec[i];
-        unordered_set<int> uset;
-
-        int ans=0;
-        for (auto x : vec) {
-            if (uset.count(x) || uset.count(2147483647 - x)) uset.erase(2147483647 - x);
-            else {
-                uset.insert(x);
-                ans++;
-            }
+        ll n;cin>>n;
+        map<ll, ll>mp;
+        ll ans = 0;
+        REP(i,0,n){
+            ll x;cin>>x;
+            mp[x]++;
         }
-
-        print(ans);
+        map<ll, ll>mp2;
+        for(auto& y : mp) {
+            ll x = y.F;
+            ll val = 0;
+        REP(j,0,31){
+            if ((x >> j)&1) continue;
+            
+            else val+=(1LL<<j);
+ 
+        }
+        ans+=max(0LL, y.S-mp2[val]);
+        mp2[x] += y.S;
+    }
+    print(ans);
     }
 
     return 0;
