@@ -93,6 +93,7 @@ using namespace std;
 #define fast ios_bfse::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define mod 1000000007
 
+
 //---------------------------------------------------------------------------------------------------------------------
 
 /*
@@ -367,60 +368,41 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-// int main(){
-//   ll t; cin>>t;
-//   while(t--){
-//       int n;cin>>n;
-//     int  ans = 200;
-//       if(n<=10) ans += 50;
-//       else if ((n-3) % 10 == 0) ans+=(((n-3)/10) * 50);
-//       else ans+=((((n-3)/10) + 1) * 50);
-//       print(ans);
-//   }
-//   return 0;
-// }
-
-int calculateMinimumBudget(int n) {
-    // Calculate the number of students who will receive Rs. 5 chocolates
-    int remainingStudents = (n > 3) ? (n - 3) : 0;
-    
-    // Calculate the budget for top 3 position holders
-    int budgetTop3 = 100 + 50 + 50;
-    
-    // Calculate the budget for remaining students
-    int budgetRemaining = remainingStudents * 5;
-    
-    // Calculate the total budget
-    int totalBudget = budgetTop3 + budgetRemaining;
-    
-    // Calculate the number of packets required for remaining students
-    int packetsRemaining = (remainingStudents + 9) / 10;
-    
-    // Calculate the total budget considering packet constraint
-    int totalBudgetWithConstraint = budgetTop3 + (packetsRemaining * 100) + (packetsRemaining * 50) + (packetsRemaining * 50);
-    
-    // Return the minimum budget among the two scenarios
-    return min(totalBudget, totalBudgetWithConstraint);
-}
-
-#include <iostream>
-using namespace std;
-
-int main() {
-    int n;
-    cin >> n;
-    int ans = 0;
-
-    if (n <= 3) {
-        ans = 100 + 50 + 50;
-    } else {
-        ans = 100 + 50 + 50;  // Top 3 position holders
-        int remainingStudents = n - 3;  // Remaining students
-        int packets = (remainingStudents + 9) / 10;  // Calculate number of packets needed
-        ans += packets * 50;  // Budget for remaining students' chocolates
+ll comps = 0;
+int dfs(int parent ,int node ,vector<vi>&adj,int mid){
+    int size = 1;
+    for(auto nei:adj[node]){
+        if(nei!=parent){
+            size += dfs(node, nei, adj, mid);
+        }
     }
-
-    cout << ans << endl;
-
+    if(size>=mid){
+        comps += 1;
+        return 0;
+    }
+    return size;
+}
+ 
+int main(){
+    int t;cin>>t;
+    while(t--){
+        ll n, k;cin >> n >> k;
+    vector<vi> adj(n);
+    REP(i,0,n-1){
+        int x, y;cin >> x >> y;
+        x--;y--;
+        adj[x].pb(y);
+        adj[y].pb(x);
+    }
+    ll low = 1,high = n;
+    ll res = 1;
+    while(low<=high){
+        ll mid = (low + high) >> 1;
+        comps = 0;
+        dfs(-1, 0, adj, mid);
+        ((comps>=k+1) ? low = mid + 1,res = mid : high = mid - 1);
+    }
+    print(res);
+    }
     return 0;
 }
