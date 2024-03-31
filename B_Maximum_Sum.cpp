@@ -307,7 +307,7 @@ vll dijkstra(ll V, vpll A[], ll S){
 void shortest_distance(vector<vector<int>>&d){
   int n = d.size();
   for(int k=0;k<n;k++){
-      for(int i=0;i<n;i++){
+      REP(i,0,n){
           for(int j=0;j<n;j++){
               if(d[i][k]==-1 || d[k][j]==-1)continue;
               if(d[i][j]==-1)   d[i][j] = d[i][k] + d[k][j];
@@ -367,24 +367,26 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        long long a, b;
-        cin >> a >> b;
-        vector<long long> vec(a);
-
-        vec[0] = (b < 2001) ? b : 1;
-       REP(i,1,a) {
-            vec[i] = (b < 2001) ? vec[i - 1] + b : vec[i - 1] + 1;
-        }
-
-       REP(i,0,a) {
-            cout << vec[i] << " ";
-        }
-        cout << endl;
-    }
-
-    return 0;
+int main(){
+  ll t; cin>>t;
+  while(t--){
+        int n;cin>>n;
+		int k;cin>>k;
+		int a[n];
+		REP(i,0,n) cin>>a[i];
+		long long m=0,sum1=0,sum2=0;
+		REP(i,0,n){
+			sum1+=a[i];
+			if(sum1<0)sum1=0;
+			m=max(sum1,m);
+		}
+		REP(i,0,n) sum2+=a[i]%mod;
+		while(sum2<0) sum2+=mod;
+		for(int i=1;i<=k;i++){
+			sum2=(sum2+m)%mod;
+			m=m*2%mod;
+		}
+		print(sum2);
+  }
+  return 0;
 }
