@@ -368,6 +368,20 @@ ll nCrModPFermat(ll n,ll r, ll p){
 */
 //---------------------------------------------------------------------------------------------------------------------
 int main(){
-  cout<< "safety";
+  ll t; cin>>t;
+  while(t--){
+    int n,m,k;cin>>n>>m>>k;
+	vi a(n);
+	REP(i,0,n) cin>>a[i];
+	sort(all(a));
+	ll ans=0;
+	int s=0;
+	for(int x:a){
+		int t=min(m,k-s);
+		ans+=1ll*(s+x)*t;
+		s+=t;
+	}
+    print(ans);
+  }
   return 0;
 }

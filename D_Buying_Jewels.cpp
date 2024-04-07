@@ -367,7 +367,38 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
+
+
+void solve(){
+	ll n,k;cin>>n>>k;
+	vll ans;
+	auto chk=[&](ll m){
+		if(n/m<=k&&k<=n/m+n%m){
+			k-=n/m;n%=m;
+			ans.pb(m);
+			if(!k);
+			else if(k==n) ans.pb(1);
+			else ans.pb(n-k+1),ans.pb(1);
+			return 1;
+		}
+		return 0;
+	};
+	if(!chk(n/2+1)){
+		ll t=n/k;
+		while(t&&n/t>k) t++;
+		if(!t||!chk(t)){
+			print("NO");
+			return;
+		}
+	}
+	cout << "YES" << endl << ans.size() << endl;
+	for(ll x:ans) cout<<x<<" ";
+	cout<<endl;
+}
 int main(){
-  cout<< "safety";
+  ll t; cin>>t;
+  while(t--){
+      solve();
+  }
   return 0;
 }
