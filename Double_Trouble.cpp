@@ -108,7 +108,7 @@ using namespace std;
 //Hello!! Stalker---->STOP STALKING :)
   //Prime factorisation----O(sqrt(n))
   vpll primefact(ll n, vll & cntt)  { vpll pfact; 
-  for(ll i=2; i*i<=n; i++) if(n%i==0){ll cnt=0; while(n%i==0) {cnt++; n/=i;} cntt[i]+=cnt;}
+  for(ll i=2; i*i<=n; i++) if(n%i==0){ll tot=0; while(n%i==0) {tot++; n/=i;} cntt[i]+=tot;}
   if(n>1) cntt[n]++;  return pfact; }
  
 //Hello!! Stalker---->STOP STALKING :)
@@ -185,13 +185,13 @@ ll sqrtt(ll x){
 //Hello!! Stalker---->STOP STALKING :)
 // regulr bracket string or not
 bool regular(string a){
-  ll cnt=0;
+  ll tot=0;
   for(ll i=0; i<a.length(); i++){
-    if(a[i]=='(') cnt++;
-    else cnt--;
-    if(cnt<0) return false;
+    if(a[i]=='(') tot++;
+    else tot--;
+    if(tot<0) return false;
   }
-  if(cnt>0) return false;
+  if(tot>0) return false;
   return true;
 }
  
@@ -289,7 +289,7 @@ vll dijkstra(ll V, vpll A[], ll S){
     ll prev=pq.top().second;
     pq.pop();
     for(auto child:A[prev]){
-      ll next=child.f;
+      ll next=child.b;
       ll nextDist=child.s;
       if(dist[next]>dist[prev]+nextDist){
         dist[next]=dist[prev]+nextDist;
@@ -307,7 +307,7 @@ vll dijkstra(ll V, vpll A[], ll S){
 void shortest_distance(vector<vector<int>>&d){
   int n = d.size();
   for(int k=0;k<n;k++){
-      REP(i,0,n){
+      for(int i=0;i<n;i++){
           for(int j=0;j<n;j++){
               if(d[i][k]==-1 || d[k][j]==-1)continue;
               if(d[i][j]==-1)   d[i][j] = d[i][k] + d[k][j];
@@ -337,12 +337,12 @@ bool valid(ll x, ll y, ll n, ll m){
 
 
 //DFS
-void dfs(ll i, ll j, ll n, ll m, vvc &a, vvi &vis,ll &cnt){
+void dfs(ll i, ll j, ll n, ll m, vvc &a, vvi &vis,ll &tot){
   vis[i][j]=1;
-  cnt++;
+  tot++;
   for(auto x:dir4){
-    ll p=i+x.f, q=j+x.s;
-    if(valid(p,q,n,m) && !vis[p][q] && a[p][q]=='1') dfs(p,q,n,m,a,vis,cnt);
+    ll p=i+x.b, q=j+x.s;
+    if(valid(p,q,n,m) && !vis[p][q] && a[p][q]=='1') dfs(p,q,n,m,a,vis,tot);
   }
 }
 
@@ -367,33 +367,65 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int chk(vi a){
-	REP(i,0,a.size()-2){
-		if(__gcd(a[i],a[i+1])>__gcd(a[i+1],a[i+2])) return i+1;
-	}
-	return -1;
-}
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-		int n,x;
-		cin>>n;
-		vi a,b;
-		REP(i,0,n) cin>>x,a.push_back(x);
-		if(check(a)==-1){
-			print("YES");
-			continue;
-		}
-		bool x=0;
-		for(int i=check(a)-1;i<=check(a)+1;i++){
-			if(i>=0 and i<=n-1){
-				b=a;
-				b.erase(b.begin()+i);
-				if(check(b)==-1) x=1;
-			}
-		}
-		if(x) print("YES");
-        else print("NO");
-	}
+  ll t; cin >> t;
+  while (t--) {
+    int n;
+    cin >> n;
+
+    vi a(n,0),p(n,0);
+    REP(i, 0, n) cin>>a[i];
+    REP(i, 0, n) cin>>p[i];
+    int tot=1, b=0;
+    REP(i,0,n){
+      if (i == n-1) {break;}
+      if (a[i] + p[i] >= a[i+1]) {}
+      else tot++;
+    }
+    if (tot <= 2) b=1;
+    tot = 1;
+    for (int i = n-1; i >= 0; i--) {
+      if (i == 0) { break; }
+      if (a[i]-p[i] <= a[i-1]) {}
+      else tot++;
+    }
+    if (tot <= 2) { b = 1; }
+    int lr= 0,rr = n-1;
+    REP(i,0,n){
+      if (a[i] + p[i] >= a[i+1]) {
+        lr= i+1; 
+        }
+      else {
+        break; 
+    }
+    }
+    for (int i = n-1; i >= 0; i--) {
+      if (a[i] - p[i] <= a[i - 1]) {
+         rr = i - 1;
+        
+     }
+      else { break; }
+    }
+    if (lr+1 >= rr){b=1;}
+    if (b) { print("YES"); 
+      continue; 
+    }
+    
+    for (int i = 1; i < n; i++) {
+      if (a[i] - p[i] <= a[i - 1]) {
+        continue;
+      }
+      else {
+        REP(j, i, n){
+          if (j == n-1) b=1;
+          if (a[j] + p[j] >= a[j + 1]) { 
+            continue; 
+          } else { break; }
+        }
+        break;
+      }
+    }
+    print(((b) ? "YES" : "NO"));
+  }
+  return 0;
 }

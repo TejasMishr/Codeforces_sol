@@ -203,7 +203,7 @@ vector<int> reverse_no(ll n){
     while(n != 0) {
     rem = n % 10;
     v.pb(rem);
-    ans = ans * 10 + rem;
+    maxi= maxi* 10 + rem;
     n /= 10;
   }
   return v;
@@ -307,7 +307,7 @@ vll dijkstra(ll V, vpll A[], ll S){
 void shortest_distance(vector<vector<int>>&d){
   int n = d.size();
   for(int k=0;k<n;k++){
-      REP(i,0,n){
+      for(int i=0;i<n;i++){
           for(int j=0;j<n;j++){
               if(d[i][k]==-1 || d[k][j]==-1)continue;
               if(d[i][j]==-1)   d[i][j] = d[i][k] + d[k][j];
@@ -367,33 +367,31 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int chk(vi a){
-	REP(i,0,a.size()-2){
-		if(__gcd(a[i],a[i+1])>__gcd(a[i+1],a[i+2])) return i+1;
-	}
-	return -1;
-}
+
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-		int n,x;
-		cin>>n;
-		vi a,b;
-		REP(i,0,n) cin>>x,a.push_back(x);
-		if(check(a)==-1){
-			print("YES");
-			continue;
-		}
-		bool x=0;
-		for(int i=check(a)-1;i<=check(a)+1;i++){
-			if(i>=0 and i<=n-1){
-				b=a;
-				b.erase(b.begin()+i);
-				if(check(b)==-1) x=1;
-			}
-		}
-		if(x) print("YES");
-        else print("NO");
-	}
-}
+   ll t; cin>>t;
+   while(t--){
+        ll n; cin>>n;
+         vector<pii> vec(n);
+ 
+         REP(i,0,n){
+             cin >> vec[i].first >> vec[i].second;  // Read V_i and A_i
+         }
+ 
+         ll maxi= 0;
+ 
+         REP(i,0,n){
+             REP(j,i+1,n){
+                ll v1 = vec[i].first;
+                ll a1 = vec[i].second;
+                ll v2 = vec[j].first;
+                ll a2 = vec[j].second;
+                ll mix= v2*a2 + v1*a2;
+                maxi= max(maxi, mix);
+             }
+         }
+ 
+         print(maxi);
+   }
+   return 0;
+ }

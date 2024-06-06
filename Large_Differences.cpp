@@ -307,7 +307,7 @@ vll dijkstra(ll V, vpll A[], ll S){
 void shortest_distance(vector<vector<int>>&d){
   int n = d.size();
   for(int k=0;k<n;k++){
-      REP(i,0,n){
+      for(int i=0;i<n;i++){
           for(int j=0;j<n;j++){
               if(d[i][k]==-1 || d[k][j]==-1)continue;
               if(d[i][j]==-1)   d[i][j] = d[i][k] + d[k][j];
@@ -367,33 +367,33 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int chk(vi a){
-	REP(i,0,a.size()-2){
-		if(__gcd(a[i],a[i+1])>__gcd(a[i+1],a[i+2])) return i+1;
-	}
-	return -1;
-}
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-		int n,x;
-		cin>>n;
-		vi a,b;
-		REP(i,0,n) cin>>x,a.push_back(x);
-		if(check(a)==-1){
-			print("YES");
-			continue;
-		}
-		bool x=0;
-		for(int i=check(a)-1;i<=check(a)+1;i++){
-			if(i>=0 and i<=n-1){
-				b=a;
-				b.erase(b.begin()+i);
-				if(check(b)==-1) x=1;
-			}
-		}
-		if(x) print("YES");
-        else print("NO");
-	}
+  ll t; cin>>t;
+  while(t--){
+        int n,k; cin>>n>>k;
+        vi vec(n);
+        
+        REP(i,0,n) cin>>vec[i];
+        
+        int sum=0;
+        REP(i,0,n-1) sum += abs(vec[i] - vec[i+1]);
+        
+        int maxi = sum;
+        
+        REP(i,0,n){
+            int tot= sum,ktot= sum;
+
+            if(i> 0) tot-= abs(vec[i] - vec[i-1]), tot+= abs(1 - vec[i-1]);
+            if(i< n-1) tot-= abs(vec[i] - vec[i + 1]), tot+= abs(1 - vec[i+1]);
+
+            maxi= max(maxi, tot);
+            
+            if(i>0) ktot -= abs(vec[i] - vec[i-1]),ktot += abs(k - vec[i-1]);
+            if(i<n-1) ktot -= abs(vec[i] - vec[i+1]), ktot += abs(k - vec[i+1]);
+            maxi = max(maxi,ktot);
+        }
+        
+        print(maxi);
+  }
+  return 0;
 }

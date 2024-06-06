@@ -307,7 +307,7 @@ vll dijkstra(ll V, vpll A[], ll S){
 void shortest_distance(vector<vector<int>>&d){
   int n = d.size();
   for(int k=0;k<n;k++){
-      REP(i,0,n){
+      for(int i=0;i<n;i++){
           for(int j=0;j<n;j++){
               if(d[i][k]==-1 || d[k][j]==-1)continue;
               if(d[i][j]==-1)   d[i][j] = d[i][k] + d[k][j];
@@ -367,33 +367,74 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-int chk(vi a){
-	REP(i,0,a.size()-2){
-		if(__gcd(a[i],a[i+1])>__gcd(a[i+1],a[i+2])) return i+1;
-	}
-	return -1;
+
+void solve() {
+
+    // vector<pii> m(n);
+    // REP(i,0,n) m[i] = {pos[i], hh[i]};
+    // sort(all(m));
+    // REP(i,0,n) {
+    //     int bps = m[i].F;
+    //     int lb = bps - k, rb = bps + k,tt=0,d;
+
+       
+    //     vector<pii> rem;
+    //     REP(j,0,n) {
+    //         if (m[j].F < lb || m[j].F > rb) rem.pb(m[j]);
+    //     }
+
+    //     for (auto& m : rem) {
+    //         tt += m.S; 
+    //         d = m.first - tt; 
+    //         if (d <= 0) return false;
+    //     }
+
+    //     if (rem.empty() || rem.back().first - tt > 0) return true; 
+    // }
+    
+    
+
+    // return false;
+    
+    int n, k;cin >> n >> k;
+    vi pos(n),hh(n);
+    REP(i,0,n) cin >> pos[i];
+    REP(i,0,n) cin >> hh[i];
+
+        // print((chk(n, k, pos, hh) ? "YES" : "NO"));
+        
+        // print(chk(n));
+    
+    vector<bool> pre(n, false);
+    ll hp = 0;
+    REP(i,0, n){
+        ll idx = upper_bound(all(pos), pos[i] + 2 * k) - pos.begin() - 1;
+        bool y = true;
+        ll health = hp;
+        REP(j, idx + 1, n){
+            health += hh[j];
+            if (health <= pos[j] && hh[j] <= pos[j]) y = true;
+            else{
+                y = false;
+                break;
+            }
+        }
+        if (y){
+            print("YES")
+            return;
+        }
+        hp += hh[i];
+        if (hp <= pos[i] && hh[i] <= pos[i]) pre[i] = true;
+        else break;
+    }
+    cout << "NO" << endl;
 }
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-		int n,x;
-		cin>>n;
-		vi a,b;
-		REP(i,0,n) cin>>x,a.push_back(x);
-		if(check(a)==-1){
-			print("YES");
-			continue;
-		}
-		bool x=0;
-		for(int i=check(a)-1;i<=check(a)+1;i++){
-			if(i>=0 and i<=n-1){
-				b=a;
-				b.erase(b.begin()+i);
-				if(check(b)==-1) x=1;
-			}
-		}
-		if(x) print("YES");
-        else print("NO");
-	}
+  ll t; cin>>t;
+  while(t--){
+       solve();
+        
+        
+  }
+  return 0;
 }
