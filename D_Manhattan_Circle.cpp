@@ -395,7 +395,7 @@ int main() {
     int t;
     cin >> t;
 
-    vector<pair<pii, vs>> tc(t);
+    vector<pair<pii, vs >> tc(t);
     REP(i, 0, t) {
         cin >> tc[i].F.F >> tc[i].F.S;
         tc[i].S.resize(tc[i].F.F);

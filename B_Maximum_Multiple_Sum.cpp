@@ -368,13 +368,11 @@ ll nCrModPFermat(ll n,ll r, ll p){
 */
 //---------------------------------------------------------------------------------------------------------------------
 int main(){
-  ll t; cin>>t;
+    ll t; cin>>t;
   
     vi vec;
-
     while (t--) {
-        int n;
-        cin >> n;
+        int n; cin >> n;
         int maxi = 0;
         int xx = 2;
 

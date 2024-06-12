@@ -369,10 +369,10 @@ ll nCrModPFermat(ll n,ll r, ll p){
 */
 //---------------------------------------------------------------------------------------------------------------------
 
-bool chk(const vll& a, const vll& b, ll val) {
+bool chk(const vll& a, const vll& b, ll vall) {
     ll dd = 0;
     for (const auto& x1 : a) {
-        ll curdd = ((val / b[&x1 - &a[0]]) + 1) * x1;
+        ll curdd = ((vall / b[&x1 - &a[0]]) + 1) * x1;
         dd += curdd;
         if (dd >= H) return true;
     }

@@ -371,14 +371,12 @@ int main() {
   int t;
   cin >> t;
   while (t--) {
-    ll x, y, z, k,aa;
-    cin >> x >> y >> z >> k;
+    ll x, y, z, k,aa; cin >> x >> y >> z >> k;
 
     ll cnt = 0,rem;
     REPE(a,1,x) {
         if (k % a == 0) {
             rem = k / a;
- 
             REPE(b,1,y) {
                 if (rem%b == 0) {
                     ll c = rem / b;
