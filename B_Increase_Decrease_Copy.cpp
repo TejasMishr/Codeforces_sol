@@ -371,10 +371,10 @@ int main(){
   ll t; cin>>t;
   while(t--){
       int n; cin>>n;
-      vi a(n),b(n+1);
+      vll a(n),b(n+1);
       REP(i,0,n) cin>>a[i];
       REP(i,0,n+1) cin>>b[i];
-      int tot=0, extra=INT_MAX;
+      ll tot=0, extra=INT_MAX;
     //   int vn=vec2[n+1];
       REP(i,0,n){
         if(b[i]<b[n]&&b[n]<a[i]){extra=0;}
