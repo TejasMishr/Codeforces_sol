@@ -377,10 +377,9 @@ int main() {
         cin >> n;
         vi a(n), b(n);
         
-        REP(i, 0, n) cin >> a[i];
-        REP(i, 0, n) cin >> b[i];
-        int x=0,y=0;
-        int m1=0,m2=0;
+        REP(i, 0, n) cin >>a[i];
+        REP(i, 0, n) cin >>b[i];
+        int x=0,y=0,m1=0,m2=0;
         REP(i, 0, n) {
           if(a[i] > b[i]) m1 +=a[i];
           if(a[i] < b[i])  m2 +=b[i];
