@@ -1,7 +1,3 @@
-
-
-
-
 //----------------------------------> Jai Shree Ram <---------------------------------------//
 /* +########################################################################################+
 +#%%%%%%%%%%%%%%%%%%%%%%%%#############################################################%%*
@@ -65,7 +61,6 @@
 *#%%%%%%%%%%%%%%%%%%%%%%%#############################################################% */
 #include<bits/stdc++.h>
 using namespace std;
-#include <unordered_set>
 // Code Shortners
 #define ub upper_bound
 #define lb lower_bound
@@ -284,7 +279,7 @@ bool comp(pair<int,string>&a, pair<int,string>&b){
 //---------------------------------------------------------------------------------------------------------------------
 
 //Dijkstra 
-vll dijkstra(ll V, vpll A[], ll S){
+vll dijkstra(ll V, vpll x1[], ll S){
   priority_queue<pii,vector<pii>,greater<pii>>pq;
   vll dist(V+1,1e9+7);
   dist[S]=0;
@@ -293,7 +288,7 @@ vll dijkstra(ll V, vpll A[], ll S){
     ll dis=pq.top().first;
     ll prev=pq.top().second;
     pq.pop();
-    for(auto child:A[prev]){
+    for(auto child:x1[prev]){
       ll next=child.f;
       ll nextDist=child.s;
       if(dist[next]>dist[prev]+nextDist){
@@ -372,28 +367,77 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-bool slv(const & A, int n) {
-    unordered_set<int> val;
-    REPE(i,1,n) val.insert(i);
-    REP(i,0,n) {
-        int need = A[i];
-        while (need > 0 && need <= n) {
-            if (val.find(need) != val.end()) {val.erase(need); break;} 
-            need++;
+
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vi a(n), b(n);
+        
+        REP(i, 0, n) cin >> a[i];
+        REP(i, 0, n) cin >> b[i];
+        int x=0,y=0;
+        int m1=0,m2=0;
+        REP(i, 0, n) {
+          if(a[i] > b[i]) m1 +=a[i];
+          if(a[i] < b[i])  m2 +=b[i];
         }
+        
+        REP(i, 0, n) {
+          if (a[i]==b[i]){
+            if(a[i]*(m1-m2)>0) m2+=b[i];
+            else m1 +=a[i];
+          }
+        }
+        print(min(m1,m2));
+        
+        // int cnt = 0, cnt2 = 0, nn = 0;
+        
+        // REP(i, 0, n) {
+        //     if (a[i] == b[i]) {
+        //         if (a[i] == -1) nn--;
+        //         else if (a[i] == 1) cnt2++;
+        //     }
+        // }
+        
+        // int x1 = 0, mini = 0;
+        
+        // REP(i, 0, n) {
+        //     if (a[i] == b[i]) continue;
+        //     (a[i] > b[i]) ? x1 += a[i] : mini += b[i];
+        // }
+        
+        // cnt = cnt2;
+        // int diff = mini - x1;
+        // int x = min(diff, cnt);
+        // x1 += x;
+        // cnt -= x;
+        
+        // if (x1 > mini) swap(x1, mini);
+        
+        // x = cnt / 2;
+        // cnt -= x;
+        
+        // x1 += max(x, cnt);
+        // mini += min(x, cnt);
+        
+        // if (x1 > mini) swap(x1, mini);
+        
+        // cnt = nn;
+        // x = max(x1 - mini, cnt);
+        // mini += x;
+        // cnt -= x;
+        
+        // x = cnt / 2;
+        // cnt -= x;
+        
+        // mini += min(x, cnt);
+        // x1 += max(x, cnt);
+        
+        // print(min(x1, mini));
     }
-    return val.empty();
-}
-
-
-int main(){
-  ll t; cin>>t;
-  while(t--){
-        int n; cin >> n;
-        vi vec(n);
-        REP(i,0,n) cin >> vec[i];
-
-        print(((slv(vec, n)) ? "YES" : "NO"));
-  }
-  return 0;
+    return 0;
 }

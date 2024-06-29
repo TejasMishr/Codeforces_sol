@@ -1,7 +1,3 @@
-
-
-
-
 //----------------------------------> Jai Shree Ram <---------------------------------------//
 /* +########################################################################################+
 +#%%%%%%%%%%%%%%%%%%%%%%%%#############################################################%%*
@@ -65,7 +61,6 @@
 *#%%%%%%%%%%%%%%%%%%%%%%%#############################################################% */
 #include<bits/stdc++.h>
 using namespace std;
-#include <unordered_set>
 // Code Shortners
 #define ub upper_bound
 #define lb lower_bound
@@ -372,28 +367,30 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-bool slv(const & A, int n) {
-    unordered_set<int> val;
-    REPE(i,1,n) val.insert(i);
-    REP(i,0,n) {
-        int need = A[i];
-        while (need > 0 && need <= n) {
-            if (val.find(need) != val.end()) {val.erase(need); break;} 
-            need++;
-        }
-    }
-    return val.empty();
-}
 
 
 int main(){
-  ll t; cin>>t;
-  while(t--){
-        int n; cin >> n;
-        vi vec(n);
-        REP(i,0,n) cin >> vec[i];
-
-        print(((slv(vec, n)) ? "YES" : "NO"));
-  }
-  return 0;
+    ll t; cin>>t;
+    while(t--){
+        string s1, s2;cin >> s1 >> s2;
+        
+        int mini = s2.size();
+        REP(x,0,s2.size()){
+            int curr = x;
+            int j = x;
+            
+            
+            REP(i,0,s1.size()){
+            if (s1[i] == s2[j]){ 
+                j++;
+            if (j == s2.size()) break;}
+        }
+        int p=curr + s2.size() - j;
+        mini = min(mini,p);
+    }
+    print(mini + s1.size());
+    
+    }
+    return 0;
 }
+

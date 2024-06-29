@@ -279,7 +279,7 @@ bool comp(pair<int,string>&a, pair<int,string>&b){
 //---------------------------------------------------------------------------------------------------------------------
 
 //Dijkstra 
-vll dijkstra(ll V, vpll A[], ll S){
+vll dijkstra(ll V, vpll vec[], ll S){
   priority_queue<pii,vector<pii>,greater<pii>>pq;
   vll dist(V+1,1e9+7);
   dist[S]=0;
@@ -288,7 +288,7 @@ vll dijkstra(ll V, vpll A[], ll S){
     ll dis=pq.top().first;
     ll prev=pq.top().second;
     pq.pop();
-    for(auto child:A[prev]){
+    for(auto child:vec[prev]){
       ll next=child.f;
       ll nextDist=child.s;
       if(dist[next]>dist[prev]+nextDist){
@@ -372,8 +372,8 @@ int main() {
     ll t; cin >> t;
     while (t--) {
         ll n; cin >> n;
-        vi A(n),order;;
-        REP(i, 0, n) cin >> A[i];
+        vi vec(n),order;;
+        REP(i, 0, n) cin >> vec[i];
 
         vector<vi> adj(n);
         REP(i, 0, n - 1) {
@@ -382,8 +382,9 @@ int main() {
             adj[a].pb(b), adj[b].pb(a);
         }
 
-        ll mini = min_element(all(A)) - A.begin();
+        ll mini = min_element(all(vec)) - vec.begin();
         vector<bool> vis(n, false);
+        
         queue<ll> bfs;
 
         order.pb(mini);
@@ -391,9 +392,11 @@ int main() {
         bfs.push(mini);
 
         while (!bfs.empty()) {
-            ll node = bfs.front();
+            ll nd = bfs.front();
             bfs.pop();
-            for (ll nei : adj[node]) {
+            for (ll nei : adj[nd]) {
+
+
                 if (!vis[nei]) {
                     vis[nei] = true;
                     order.pb(nei);

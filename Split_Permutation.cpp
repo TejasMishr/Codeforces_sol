@@ -387,10 +387,11 @@ int main(){
   ll t; cin>>t;
   while(t--){
         int n; cin >> n;
-        if(n%2) cout<<n--<<" ";
+
+        if(n % 2) cout<< n-- <<" ";
 
         REPE(i,1,n/2){
-            int j=n-i+1;
+            int j = n - i + 1;
             cout<<j<<" "<<i<<" ";
         }
         cout<<"\n";
