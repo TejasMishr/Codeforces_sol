@@ -367,54 +367,90 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
+
+ll step[1000006],a[1000006],d[1000006];
 int main() {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(nullptr);
-    // cout.tie(nullptr);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
 
     // int t;
     // cin >> t;
 
     // while (t--) {
-        ll n, m;
-        cin >> n >> m;
+        // ll n, m;
+        // cin >> n >> m;
 
-        vi a(n);
-        REP(i,0,n) cin >> a[i];
+        // vi a(n);
+        // REP(i,0,n) cin >> a[i];
 
-        vector<pii> v(n);
-        REP(i,0,n) {
-            ll x;
+        // vector<pii> v(n);
+        // REP(i,0,n) {
+        //     ll x;
+        //     cin >> x;
+        //     v[i] = {a[i] - x, a[i]};
+        // }
+
+        // sort(all(v));
+
+        // multiset<ll> s;
+        // REP(i,0,m) {
+        //     ll x; cin >> x;
+        //     s.insert(-x);
+        // }
+
+        // ll ans = 0;
+        // for (const auto& z : v) {
+        //     ll d = z.first;
+        //     ll val = z.second;
+
+        //     while (!s.empty() && -*s.begin() >= val) {
+        //         ll x = -*s.begin();
+        //         ll c = (x - val + d) / d;
+        //         if (c <= 0) break;
+        //         x -= c * d;
+        //         ans += c;
+        //         s.erase(s.begin());
+        //         s.insert(-x);
+        //     }
+        // }
+        
+
+        
+        
+        REPE(i,0,1000002) d[i]=1e10;
+        
+        ll n,m,x; cin>>n>>m;
+        
+        REP(i,0,n) cin>>a[i];
+        REP(i,0,n){
             cin >> x;
-            v[i] = {a[i] - x, a[i]};
+            d[a[i]]= min(d[a[i]],a[i]-x);
         }
-
-        sort(all(v));
-
-        multiset<ll> s;
-        REP(i,0,m) {
-            ll x; cin >> x;
-            s.insert(-x);
+        
+        step[0]=0;
+        REPE(i,1,1000000){
+            d[i] = min(d[i-1],d[i]);
+            if(i-d[i] >= 0) step[i] = 1 + step[i-d[i]];
         }
+        ll ans=0;
+        ll dd=d[1000000];
 
-        ll ans = 0;
-        for (const auto& z : v) {
-            ll d = z.first;
-            ll val = z.second;
+        while(m--){
+            cin >> x;
+            
+            if(x > 1000000){
+                ll cnt= (x-1000000+dd-1)/dd;
+                ans+=cnt;
+                x-=cnt*dd;
 
-            while (!s.empty() && -*s.begin() >= val) {
-                ll x = -*s.begin();
-                ll c = (x - val + d) / d;
-                if (c <= 0) break;
-                x -= c * d;
-                ans += c;
-                s.erase(s.begin());
-                s.insert(-x);
             }
-        }
-
-        cout << ans + ans << '\n';
+        ans+=step[x];
+    }
+    print(ans+ans);
     // }
 
     return 0;
 }
+
+

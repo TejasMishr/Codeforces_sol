@@ -370,24 +370,26 @@ ll nCrModPFermat(ll n,ll r, ll p){
 int main(){
   ll t; cin>>t;
   while(t--){
-      string s;
-        cin >> s;
+        string s; cin >> s;
         
         
-        if (s.find("01234") != string::npos && s.find("56789") != string::npos) {
-            print("NO")
-            continue;
-        }
-        int len = s.size();
-        bool b = false;
-        int tot = 0, btot = 35;
-        for(int i=0;i<len-1;i++) {
-            tot += (s[i] - '0');
-            if (s[i] == '0') {b = true;}
-        }
+        // if (s.find("01234") != string::npos && s.find("56789") != string::npos) {
+        //     print("NO")
+        //     continue;
+        // }
+        // ll len = s.size();
+        // bool b = false;
+        // ll tot = 0, btot = 35;
+        // for(ll i=0;i<len-1;i++) {
+        //     tot += (s[i] - '0');
+        //     if (s[i] == '0') {
+        //       b = true;
+        //     }
+        // }
         
-        if (s[len - 1] == '9' || tot == btot || s[0] != '1' || len % 10 == 0 || b) print("NO")
+        if(s[0]!='1' || s[s.size() - 1]=='9'|| count(s.begin(),s.end()-1,'0') != 0) print("NO")
         else print("YES");
   }
   return 0;
 }
+
