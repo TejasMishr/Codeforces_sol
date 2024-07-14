@@ -85,14 +85,11 @@ using namespace std;
 #define pf  push_front
 #define ppf pop_front
 #define mp make_ pair
-#define int long long
 #define len(s) (int)s.size()
 #define print(x) cout<<x<<endl;
 #define REP(i,a,b) for( int i = a; i < b; i++)
 #define REPE(i,a,b) for( int i = a; i <= b; i++)
 #define all(a) (a).begin(), (a).end()
-const int MOD = 998244353;
-const int N = 1e6 + 5;
 #define fast ios_bfse::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define mod 1000000007
 
@@ -370,45 +367,20 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
-
-
-int main() {
-    int x;
-    cin >> x;
-    while (x--) {
-        int n;
-        cin >> n;
-        int n;cin>>n;
-    vec1<int>a(n+1);inn(a);
-    vec1<int>pref=prefixSum(a,1);
-    vec1<int>dp(n+1);
-    vec1<Mint>cnt(n+5),ncnt(n+5);
-    if(a[1]>=0){
-        dp[1]=a[1];
-        cnt[1]=2;
-        ncnt[1]=2;
-    }else{
-        dp[1]=abs(a[1]);
-        cnt[1]=1;
-        ncnt[1]=1;
+int main(){
+    ll t; 
+    cin >> t;
+    while(t--){
+        int n, m;
+        cin >> n >> m;
+        vector<vi> a(n + 2,vi(m + 2, 0));
+        REPE(i,1,n) REPE(j,1,m)cin >> a[i][j];
+        REPE(i,1,n){
+            REPE(j,1,m){
+                cout << min(max(max(a[i][j-1], a[i-1][j]), max(a[i][j+1], a[i+1][j])), a[i][j]) << ' ';
+            }
+            cout << endl;
+        }
     }
-    FOR(i,2,n+1){
-        dp[i]=dp[i-1]+a[i];
-        ckmax(dp[i],abs(dp[i-1]+a[i]));
-        ckmax(dp[i],pref[i-1]+a[i]);
-        ckmax(dp[i],abs(pref[i-1]+a[i]));
-        if(dp[i]==dp[i-1]+a[i])cnt[i]+=cnt[i-1];
-        if(dp[i]==abs(dp[i-1]+a[i]))cnt[i]+=cnt[i-1];
-        if(pref[i-1]!=dp[i-1] and dp[i]==pref[i-1]+a[i])cnt[i]+=ncnt[i-1];
-        if(pref[i-1]!=dp[i-1] and dp[i]==abs(pref[i-1]+a[i]))cnt[i]+=ncnt[i-1];
- 
-        if(pref[i]==dp[i-1]+a[i])ncnt[i]+=cnt[i-1];
-        if(pref[i]==abs(dp[i-1]+a[i]))ncnt[i]+=cnt[i-1];
-        if(pref[i-1]!=dp[i-1] and pref[i]==pref[i-1]+a[i])ncnt[i]+=ncnt[i-1];
-        if(pref[i-1]!=dp[i-1] and pref[i]==abs(pref[i-1]+a[i]))ncnt[i]+=ncnt[i-1];
-    }
-    cout<<cnt[n].x<<nl;
-    }
-
     return 0;
 }
