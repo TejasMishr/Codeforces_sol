@@ -367,75 +367,53 @@ ll nCrModPFermat(ll n,ll r, ll p){
 }
 */
 //---------------------------------------------------------------------------------------------------------------------
- 
-bool canEqualize(int n, int m, int k, vector<vi>& heights, vector<vb>& snowyCaps) {
-    long long sumWithSnow = 0, sumWithoutSnow = 0;
-    vector<vi> prefixSum(n + 1, vector<int>(m + 1, 0));
-
-    // Calculate prefix sum and total sums
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            prefixSum[i+1][j+1] = prefixSum[i+1][j] + prefixSum[i][j+1] - prefixSum[i][j] + heights[i][j];
-            if (snowyCaps[i][j]) {
-                sumWithoutSnow += heights[i][j];
-            } else {
-                sumWithSnow += heights[i][j];
-            }
-        }
-    }
-
-    // If sums are already equal, return true
-    if (sumWithSnow == sumWithoutSnow) return true;
-
-    // Check if it's possible to equalize sums
-    for (int i = k; i <= n; i++) {
-        for (int j = k; j <= m; j++) {
-            int submatrixSum = prefixSum[i][j] - prefixSum[i-k][j] - prefixSum[i][j-k] + prefixSum[i-k][j-k];
-            bool allSame = true;
-            for (int x = i-k; x < i && allSame; x++) {
-                for (int y = j-k; y < j; y++) {
-                    if (snowyCaps[x][y] != snowyCaps[i-k][j-k]) {
-                        allSame = false;
-                        break;
-                    }
-                }
-            }
-            if (!allSame) return true;
-        }
-    }
-
-    return false;
+// #define N 205
+#define N 505
+int a[N][N];
+int s[N][N];
+int gcd(int x,int y){
+  return y ? gcd(y,x%y) : x;
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-
+    
     int t;
     cin >> t;
 
     while (t--) {
-        int n, m, k;
-        cin >> n >> m >> k;
+        int n, m, k; cin>>n>>m>>k;
 
-        vector<vi> heights(n, vector<int>(m));
-        vector<vb> snowyCaps(n, vector<bool>(m));
+        REPE(i,1,n) REPE(j,1,m) cin >> a[i][j];
+            
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cin >> heights[i][j];
+        ll sum = 0;
+
+        REPE(i,1,n) {
+            REPE(j,1,m) {
+                char ch; cin>>ch;
+                (ch == '0') ? sum -= a[i][j] : sum += a[i][j];
+                s[i][j] = s[i - 1][j] + s[i][j - 1] - s[i - 1][j - 1] + (ch == '1');
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            string row;
-            cin >> row;
-            for (int j = 0; j < m; j++) {
-                snowyCaps[i][j] = (row[j] == '0');
+        sum = abs(sum);
+
+        int gcdd = abs(k*k-2 * s[k][k]);
+
+        for (int i = 1; i + k-1 <= n; ++i) {
+            for (int j = 1; j+k-1 <= m; ++j) {
+                ll val= (s[i+k-1][j+k-1] - s[i - 1][j+k-1] - s[i + k-1][j - 1] + s[i - 1][j - 1]);
+                        
+                gcdd = gcd(gcdd, abs(k * k - 2 * val));
             }
         }
 
-        cout << (canEqualize(n, m, k, heights, snowyCaps) ? "YES" : "NO") << endl;
+        if(!gcdd) {
+          print((sum ? "NO" : "YES"));
+        }
+        else { 
+          print((sum % gcdd ? "NO" : "YES"));
+        }
     }
 
     return 0;
