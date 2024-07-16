@@ -5,58 +5,58 @@ using namespace std;
 #define REP(i, a, b) for (int i = a; i < b; ++i)
 
 void solve() {
-    int n;
-    cin >> n;
-    vll a(n), b(n);
-    REP(i, 0, n) cin >> a[i];
-    REP(i, 0, n) cin >> b[i];
-    
-    int m;
-    cin >> m;
-    map<ll, int> mp;
-    REP(i, 0, m) {
-        ll d;
-        cin >> d;
-        mp[d]++;
+    ll n;
+    cin>>n;
+    vll a(n+1),b(n+1);
+    map<ll,set<ll>>md;
+    f1(i,1,n){
+        cin>>a[i];
     }
-
-    map<ll, int> error, correct, correct1;
-    REP(i, 0, n) {
-        if (a[i] != b[i]) {
-            error[b[i]]++;
-        } else {
-            correct1[b[i]]++;
-        }
+    f1(i,1,n){
+        cin>>b[i];
     }
-
-    REP(i, 0, m) {
-        correct[d[i]]++;
+    ll m;
+    cin>>m;
+    vll d(m+1);
+    f1(i,1,m){
+        cin>>d[i];
+        md[d[i]].insert(i);
     }
-
-    bool flag = true;
-    int sum = 0;
-    for (auto it : error) {
-        if (error[it.first] > correct[it.first]) {
-            flag = false;
-            break;
-        } else {
-            sum += error[it.first];
-        }
-    }
-
-    if (m - sum > 0) {
-        for (auto it : correct1) {
-            if (!correct[it.first]) {
-                flag = false;
-                break;
+    ll lst=0;
+    f1(i,1,n){
+        if(a[i]!=b[i]){
+            if(md.find(b[i])==md.end()){
+                cout<<"no"<<endl;
+                return;
+            }
+            else{
+                auto it=(--md[b[i]].end());
+                lst=max(lst,* it);
+                md[b[i]].erase(it);
+                if(md[b[i]].size()==0){
+                    md.erase(b[i]);
+                }
             }
         }
     }
-
-    if (flag)
-        cout << "YES\n";
-    else
-        cout << "NO\n";
+    f1(i,1,n){
+        if(md.find(b[i])!=md.end()){
+            auto it=(--md[b[i]].end());
+            lst=max(lst,*it);
+            md[b[i]].erase(it);
+            if(md[b[i]].size()==0){
+                md.erase(b[i]);
+            }
+        }
+    }
+    if(lst==m){
+        cout<<"yes"<<endl;
+        return;
+    }
+    else{
+        cout<<"no"<<endl;
+        return;
+    }
 }
 
 int main() {
