@@ -121,8 +121,8 @@ using namespace std;
 //Hello!! Stalker---->STOP STALKING :) 
   //Binary Exponentiation(iterative)---divide & conquer-----> O(log b)
   ll powerIter(ll a, ll b){
-    ll ans=1;
-    while(b){ if(b&1) { ans=(ans*a);} a=(a*a); b>>=1;} return ans;
+    ll res=1;
+    while(b){ if(b&1) { res=(res*a);} a=(a*a); b>>=1;} return res;
   }
  
  //
@@ -199,11 +199,11 @@ bool regular(string a){
 //Reverse a number
 vector<int> reverse_no(ll n){
     vi v;
-    ll ans=0, rem;
+    ll res=0, rem;
     while(n != 0) {
     rem = n % 10;
     v.pb(rem);
-    ans = ans * 10 + rem;
+    res = res * 10 + rem;
     n /= 10;
   }
   return v;
@@ -370,23 +370,30 @@ ll nCrModPFermat(ll n,ll r, ll p){
 int main(){
   ll t; cin>>t;
   while(t--){
-        int n, s1, sum=1000;
-		string s; cin>>n>>s;
-		REP(i,0,n-1){
+        int n, k; cin >> n >> k;
+        
+        int res = 0;
 
-			s1=((s[i]-'0')*10 + s[i+1]-'0');
-			REP(j,0,n){
-				if(j!=i && j!=i+1 && s[j]!='1'){
+        if (k > 0) {
+            
+            k=k - n;
+            res++;
+        }
 
-                    int a= s1*(s[j]-'0');
-                    s1= min(a, s1 + (s[j]-'0'));
-                    // print(s1);
-                }
-				
-			}
-			sum= min(sum, s1);
-		}
-		print(sum);
+        n--;
+        while (k > 0) {
+            k = k - n;
+            res++;
+
+            if (k > 0) {
+                res++;
+                k -= n;
+            }
+
+            n--;
+        }
+
+       print(res);
   }
   return 0;
 }

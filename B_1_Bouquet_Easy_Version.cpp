@@ -370,23 +370,33 @@ ll nCrModPFermat(ll n,ll r, ll p){
 int main(){
   ll t; cin>>t;
   while(t--){
-        int n, s1, sum=1000;
-		string s; cin>>n>>s;
-		REP(i,0,n-1){
+        ll n, m; cin>>n>>m;
+        vll vec(n);
+        
+        REP(i,0,n) cin>>vec[i];
+        
+        sort(all(vec));
 
-			s1=((s[i]-'0')*10 + s[i+1]-'0');
-			REP(j,0,n){
-				if(j!=i && j!=i+1 && s[j]!='1'){
+        ll tot = 0, maxi = 0;
+        ll j = 0;
 
-                    int a= s1*(s[j]-'0');
-                    s1= min(a, s1 + (s[j]-'0'));
-                    // print(s1);
-                }
-				
-			}
-			sum= min(sum, s1);
-		}
-		print(sum);
-  }
+        REP(i, 0, n) { 
+            
+            tot +=vec[i];
+            while (vec[i] - vec[j] > 1) {
+                tot =tot - vec[j]; 
+                j++;
+            }
+            
+            while (tot > m) {
+                tot = tot - vec[j];
+                j++;
+            }
+
+            maxi =max(maxi, tot);
+        }
+
+        print(maxi);
+    }  
   return 0;
 }
