@@ -1,3 +1,4 @@
+
 //----------------------------------> Jai Shree Ram <---------------------------------------//
 /* +########################################################################################+
 +#%%%%%%%%%%%%%%%%%%%%%%%%#############################################################%%*
@@ -137,11 +138,11 @@ ll mod_sub(ll a, ll b) {a = a % mod; b = b % mod; return (((a - b) % mod) + mod)
  //
 //Hello!! Stalker---->STOP STALKING :)
   // Sieve of Erastosthenes---> O(n* log(logn))
-   vector<ll> sieve(int n) {vll vec(n+1,0); vector<ll> vect; 
-    vec[1]=1;
+   vector<ll> sieve(int n) {vll arr(n+1,0); vector<ll> vect; 
+    arr[1]=1;
   for (int i = 2; i <= n; i++)
-  if (vec[i] == 0) {vec[i]=i; 
-  for (int j = 2 * i; j <= n; j += i)vec[j] = i;} return vec;}
+  if (arr[i] == 0) {arr[i]=i; 
+  for (int j = 2 * i; j <= n; j += i)arr[j] = i;} return arr;}
  
 //Hello!! Stalker---->STOP STALKING :)
   //sum_of_digits
@@ -368,24 +369,31 @@ ll nCrModPFermat(ll n,ll r, ll p){
 */
 //---------------------------------------------------------------------------------------------------------------------
 int main(){
-  ll t; cin>>t;
-  while(t--){
-        int a, b, c; cin >> a >> b >> c;
-        int maxi = 0;
-        int n1, n2, n3; 
-        int vec[3] = {a, b, c};
+    ll t; cin >> t;
+    while(t--){
+        int n; cin >> n;
+        string s; cin >> s;
         
-        sort(vec, vec + 3);
-        for (int i = 0; i < 5; i++) {
-            if (vec[0] <= vec[1] && vec[0] <= vec[2]) vec[0]++;
-            else if (vec[1] <= vec[0] && vec[1] <= vec[2]) vec[1]++;
-            else vec[2]++;
-            sort(vec, vec + 3);
+        ll a=0,b=0;
+        ll flag1=0, flag2=0;
+        
+        REP(i,0,n){
+            
+            if(s[i] =='0' && flag1 ==0){
+                flag1 = 1;
+                // flag2 = 0;
+                a++;
+            
+            }
+            
+            if(s[i]=='1'){
+                flag1 = 0;
+                flag2 = 1;
+                b++;
+            }
         }
-        maxi= vec[0] * vec[1] * vec[2];
-        print(maxi);
         
-  }
+        print(((b>a) ? "YES" : "NO"));
+    }  
   return 0;
-  
 }
