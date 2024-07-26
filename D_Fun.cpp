@@ -34,8 +34,24 @@ using namespace std;
 #define mod 1000000007
 
 //---------------------------------------------------------------------------------------------------------------------
-void sol(){
-  
+void sol() {
+    ll n,x; cin >>n >>x;
+
+    ll tot = 0;
+    REPE(i,0,n) {
+        int mini = min(x - i, n/i);
+        // print(mini);
+        REPE(j,1,mini) {
+            ll cal= (n-i*j) / (i+j);
+            
+            ll minn =min(x-i-j, cal);
+            // print(mini);
+            tot += max(0LL, minn);
+            // print(tot); 
+        }
+    }
+
+    cout << tot << endl;
 }
 int main(){
   ll t; cin>>t;

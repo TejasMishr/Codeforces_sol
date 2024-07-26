@@ -34,9 +34,31 @@ using namespace std;
 #define mod 1000000007
 
 //---------------------------------------------------------------------------------------------------------------------
-void sol(){
-  
+void rd(vector<vc>& grid, int n,int k) {
+    REP(i,0,n){
+        string row, col; cin >>row;
+        for(auto x: row) grid[i].pb(x);
+        // for(auto x: col)
+    }
 }
+
+void red(const vector<vc>& grid, int n, int k) {
+    for (int i = 0; i <n; i=k +i) {
+        for (int j = 0; j<n; j =k +j ) {
+            cout<<grid[i][j];
+        }
+        cout<<'\n';
+    }
+}
+void sol(){
+    int n, k; cin>>n>>k;
+    vector<vc> grid(n);
+
+    rd(grid,n,k);
+    
+    red(grid, n, k);
+}
+
 int main(){
   ll t; cin>>t;
   while(t--){
@@ -44,3 +66,6 @@ int main(){
   }
   return 0;
 }
+
+
+

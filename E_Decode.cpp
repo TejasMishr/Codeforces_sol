@@ -34,8 +34,28 @@ using namespace std;
 #define mod 1000000007
 
 //---------------------------------------------------------------------------------------------------------------------
-void sol(){
-  
+void sol() {
+    string s; cin >> s;
+    ll res = 1, len= s.size();
+    vll pref(len + 1);
+    vll suf(2 * len + 2);
+    REP(i,0,len){
+
+        if(s[i] - '0') pref[i + 1] = pref[i] + 1;
+        else{
+            pref[i + 1] = pref[i] - 1;
+        }
+    } 
+    for (int j = 1; j <= len; ++j) {
+        ll suff = suf[pref[j - 1]+len] ;
+        suf[pref[j-1] + len] =suff+j;
+
+        // print(suff);
+        ll tmp= (ll)suf[pref[j]+len];
+        res = (res + tmp * (len-j+1)) % mod;
+        // print(res);
+    }
+    print(res-1);
 }
 int main(){
   ll t; cin>>t;
