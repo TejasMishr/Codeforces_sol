@@ -36,26 +36,35 @@ using namespace std;
 //---------------------------------------------------------------------------------------------------------------------
 void sol() {
     string s; cin >> s;
-    ll res = 1, len= s.size();
+    ll res = 0, len= s.size();
+    
+	
+	s='#'+s;
+	map<ll,ll>mp;
+	ll now=0;
+	mp[0]=1;
+
     vll pref(len + 1);
     vll suf(2 * len + 2);
-    REP(i,0,len){
+    REPE(i,1,len){
 
-        if(s[i] - '0') pref[i + 1] = pref[i] + 1;
-        else{
-            pref[i + 1] = pref[i] - 1;
-        }
+        if(s[i] - '0') now--;
+        else now++;
+        res +=mp[now]*(len -i +1);
+		res %= mod;
+		mp[now] += 1 + i;
+        
     } 
-    for (int j = 1; j <= len; ++j) {
-        ll suff = suf[pref[j - 1]+len] ;
-        suf[pref[j-1] + len] =suff+j;
+    // for (int j = 1; j <= len; ++j) {
+    //     ll suff = suf[pref[j - 1]+len] ;
+    //     suf[pref[j-1] + len] =suff+j;
 
-        // print(suff);
-        ll tmp= (ll)suf[pref[j]+len];
-        res = (res + tmp * (len-j+1)) % mod;
-        // print(res);
-    }
-    print(res-1);
+    //     // print(suff);
+    //     ll tmp= (ll)suf[pref[j]+len];
+    //     res = (res + tmp * (len-j+1)) % mod;
+    //     // print(res);
+    // }
+    print(res);
 }
 int main(){
   ll t; cin>>t;

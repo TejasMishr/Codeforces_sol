@@ -38,10 +38,10 @@ void sol() {
     ll n,x; cin >>n >>x;
 
     ll tot = 0;
-    REPE(i,0,n) {
-        int mini = min(x - i, n/i);
+    REPE(i,1,n) {
+        // int mini = min(x - i, n/i);
         // print(mini);
-        REPE(j,1,mini) {
+        for(int j=1; i*j<n; j++) {
             ll cal= (n-i*j) / (i+j);
             
             ll minn =min(x-i-j, cal);
@@ -50,8 +50,7 @@ void sol() {
             // print(tot); 
         }
     }
-
-    cout << tot << endl;
+    print(tot);
 }
 int main(){
   ll t; cin>>t;
