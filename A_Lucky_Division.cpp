@@ -1,6 +1,5 @@
 // +########################################################################################+
 #include<bits/stdc++.h>
-#include<unordered_map>
 using namespace std;
 // Code Shortners
 #define ub upper_bound
@@ -48,52 +47,32 @@ using namespace std;
 #define Si stack<int>
 #define Sc stack<char>
 #define Sst stack<string>
- #define readll(t) ll t; cin >> t
+ #define readll(n) ll n; cin >> n
 #define readS(str) string str;  cin >> str
 
 //---------------------------------------------------------------------------------------------------------------------
-void sol(){
-    int n,q; cin>>n >>q;
-    string a, b; cin>>a >>b;
-  
-//   sort(all(a));
-    vvi s(n+1,vi(26,0));
-    
-    cout<<endl;
-	REP(i,0,n){
-		s[i+1] =s[i];
-		s[i + 1][a[i]-'a']++;
+string sol(){
+  int n; cin >>n;
 
-		s[i + 1][b[i]-'a']--;
-	}
-    // for(int i=0;i<n+1;i++){
-    //     for(int j=0;j<26;j++){
-    //         cout<<s[i][j]<<" ";
-    //     }
-    //     cout<<endl;
+  if(n <0) return "NO";
+
+  else if(n%4 == 0 || n%7 == 0 || n%47 == 0 || n%74 == 0 || n%444 == 0 || n%447 == 0 || n%474 == 0 || n%477 == 0 || n%744 == 0 || n%747 == 0 || n%774 == 0 || n%777 == 0) return "YES";
+
+  else {
+    // string num =to_string(n);
+    // for(char x : num) {
+    //   if(x != '4' && x != '7') {
+    //     return "NO";
+    //     break;
+    //   }
     // }
-    while(q--){
-        int l,r; cin>> l >>r;
-        // unordered_map<char,int> mp1,mp2;
-        
-		ll ans=0;
-        l--;
-		REP(i,0,26){
-			ans += max(0, (s[r][i] - s[l][i]));
-		}
-        
-		
-        print(ans);
-    }
-      
-
-     
-}
-
-int main(){
-  ll t; cin>>t;
-  while(t--){
-      sol();
+    return "NO";
   }
+}
+int main(){
+  // int t; cin>>t;
+  // while(t--){
+    print(sol());
+  // }
   return 0;
 }

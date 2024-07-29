@@ -1,6 +1,5 @@
 // +########################################################################################+
 #include<bits/stdc++.h>
-#include<unordered_map>
 using namespace std;
 // Code Shortners
 #define ub upper_bound
@@ -48,52 +47,41 @@ using namespace std;
 #define Si stack<int>
 #define Sc stack<char>
 #define Sst stack<string>
- #define readll(t) ll t; cin >> t
+ #define readll(n) ll n; cin >> n
 #define readS(str) string str;  cin >> str
 
-//---------------------------------------------------------------------------------------------------------------------
-void sol(){
-    int n,q; cin>>n >>q;
-    string a, b; cin>>a >>b;
-  
-//   sort(all(a));
-    vvi s(n+1,vi(26,0));
-    
-    cout<<endl;
-	REP(i,0,n){
-		s[i+1] =s[i];
-		s[i + 1][a[i]-'a']++;
-
-		s[i + 1][b[i]-'a']--;
-	}
-    // for(int i=0;i<n+1;i++){
-    //     for(int j=0;j<26;j++){
-    //         cout<<s[i][j]<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-    while(q--){
-        int l,r; cin>> l >>r;
-        // unordered_map<char,int> mp1,mp2;
-        
-		ll ans=0;
-        l--;
-		REP(i,0,26){
-			ans += max(0, (s[r][i] - s[l][i]));
-		}
-        
-		
-        print(ans);
+// //---------------------------------------------------------------------------------------------------------------------
+string sol(){
+    readS(str);
+    bool chk = true, fst = true;
+    int len = 0;
+    REP(i,0,str.length()) {
+        if (islower(str[i])) chk =false;
+        if (i != 0 && islower(str[i])) fst =false;
+        if(isupper(str[i])) len++;
     }
-      
 
-     
+    if(len == str.length()){
+        transform(str.begin(), str.end(), str.begin(), ::tolower); 
+        return str;
+    }
+    
+    else if (chk || fst){
+        transform(str.begin(), str.end(), str.begin(), ::tolower); 
+        str[0]=toupper(str[0]);
+        
+        
+    }
+    return str;
+    
 }
+        
+
 
 int main(){
-  ll t; cin>>t;
-  while(t--){
-      sol();
-  }
+//   readll(t)
+//   while(t--){
+      print(sol());
+//   }
   return 0;
 }

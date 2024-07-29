@@ -1,6 +1,5 @@
 // +########################################################################################+
 #include<bits/stdc++.h>
-#include<unordered_map>
 using namespace std;
 // Code Shortners
 #define ub upper_bound
@@ -48,52 +47,34 @@ using namespace std;
 #define Si stack<int>
 #define Sc stack<char>
 #define Sst stack<string>
- #define readll(t) ll t; cin >> t
+ #define readll(n) ll n; cin >> n
 #define readS(str) string str;  cin >> str
 
 //---------------------------------------------------------------------------------------------------------------------
 void sol(){
-    int n,q; cin>>n >>q;
-    string a, b; cin>>a >>b;
+    int a,b,c; cin >> a>> b >> c;
+
+    ll p = a * (b+c);
+    ll q = a * b * c;
+    ll r = a + b +c;
+    ll s = (a+b) *c;
+    print(max({p,q,r,s}));
+//   if(a==1 && b==1 && c==1) print(3)
+//   if(a==0 || b==0 || c==0){
+
+//   }
+//   else {
+//     if(a == 1) print((1 + max(b,c)) * min(b,c))
+//     else if(b == 1) print((1 + min(a,c)) * max(a,c))
+//     else if(c == 1) print((1 + max(a,b)) * min(a,b))
+//     else print(a*b*c);
+//   }
   
-//   sort(all(a));
-    vvi s(n+1,vi(26,0));
-    
-    cout<<endl;
-	REP(i,0,n){
-		s[i+1] =s[i];
-		s[i + 1][a[i]-'a']++;
-
-		s[i + 1][b[i]-'a']--;
-	}
-    // for(int i=0;i<n+1;i++){
-    //     for(int j=0;j<26;j++){
-    //         cout<<s[i][j]<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-    while(q--){
-        int l,r; cin>> l >>r;
-        // unordered_map<char,int> mp1,mp2;
-        
-		ll ans=0;
-        l--;
-		REP(i,0,26){
-			ans += max(0, (s[r][i] - s[l][i]));
-		}
-        
-		
-        print(ans);
-    }
-      
-
-     
 }
-
 int main(){
-  ll t; cin>>t;
-  while(t--){
+//   readll(t)
+//   while(t--){
       sol();
-  }
+//   }
   return 0;
 }

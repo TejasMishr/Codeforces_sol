@@ -1,6 +1,5 @@
 // +########################################################################################+
 #include<bits/stdc++.h>
-#include<unordered_map>
 using namespace std;
 // Code Shortners
 #define ub upper_bound
@@ -26,16 +25,16 @@ using namespace std;
 #define ppf pop_front
 #define mpair make_pair
 #define len(s) (int)s.size()
-#define inp(i,a,b,vec) for(ll i = a; i < b; i++) cin>>vec[i];
+#define inp(i,x1,y1,vec) for(ll i = x1; i < y1; i++) cin>>vec[i];
 #define print(x) cout<<x<<endl;
-#define REP(i,a,b) for(ll i = a; i < b; i++)
-#define REPE(i,a,b) for(ll i = a; i <= b; i++)
+#define REP(i,x1,y1) for(ll i = x1; i < y1; i++)
+#define REPE(i,x1,y1) for(ll i = x1; i <= y1; i++)
 #define nl cout<<endl;
-#define autoprint(a) for(auto i:a) cout<<i<<nl;
-#define trav(x,a) for(auto& x : a)
+#define autoprint(x1) for(auto i:x1) cout<<i<<nl;
+#define trav(x,x1) for(auto& x : x1)
 //  Container bounds
-#define rall(c)rbegin(c),rend(c)
-#define all(a) (a).begin(), (a).end()
+#define rall(z1)rbegin(z1),rend(z1)
+#define all(x1) (x1).begin(), (x1).end()
 #define MIN(v) *min_element(all(v))
 #define MAX(v) *max_element(all(v))
 #define SUM(v) accumulate(all(v),0)
@@ -48,52 +47,30 @@ using namespace std;
 #define Si stack<int>
 #define Sc stack<char>
 #define Sst stack<string>
- #define readll(t) ll t; cin >> t
+ #define readll(n) ll n; cin >> n
 #define readS(str) string str;  cin >> str
 
 //---------------------------------------------------------------------------------------------------------------------
 void sol(){
-    int n,q; cin>>n >>q;
-    string a, b; cin>>a >>b;
-  
-//   sort(all(a));
-    vvi s(n+1,vi(26,0));
-    
-    cout<<endl;
-	REP(i,0,n){
-		s[i+1] =s[i];
-		s[i + 1][a[i]-'a']++;
-
-		s[i + 1][b[i]-'a']--;
-	}
-    // for(int i=0;i<n+1;i++){
-    //     for(int j=0;j<26;j++){
-    //         cout<<s[i][j]<<" ";
-    //     }
-    //     cout<<endl;
-    // }
-    while(q--){
-        int l,r; cin>> l >>r;
-        // unordered_map<char,int> mp1,mp2;
-        
-		ll ans=0;
-        l--;
-		REP(i,0,26){
-			ans += max(0, (s[r][i] - s[l][i]));
-		}
-        
-		
-        print(ans);
+    int n; cin>>n;
+    // vi vec1(n),vec2(n),vec3(n);
+    int x1=0,y1=0,z1=0;
+    REP(i,0,n){
+        int x,y,z; cin >> x>> y >> z;
+        // cout<<"x1 : "<<x<<" "<<y<<" "<<z<<" "<<endl;
+        x1 +=x;
+        y1 +=y;
+        z1 +=z;
+        // cout<<"x11 : "<<x1<<" "<<y1<<" "<<z1<<" "<<endl;
     }
-      
+    if(x1==0 && y1==0 && z1==0) cout<<"YES";
+    else cout<<"NO";
 
-     
 }
-
 int main(){
-  ll t; cin>>t;
-  while(t--){
+//   readll(t);
+//   while(t--){
       sol();
-  }
+//   }
   return 0;
 }
