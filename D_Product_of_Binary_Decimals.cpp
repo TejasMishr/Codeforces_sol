@@ -56,7 +56,7 @@ void sol(){
   for(int i = 32; i>1; i--) {
 
     string s = bitset< 6 >( i ).to_string();
-    int temp=stoi(s);
+    int temp =stoi(s);
 
     while( n % temp == 0) n /= temp;
   }
