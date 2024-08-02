@@ -40,7 +40,7 @@ using namespace std;
 #define SUM(v) accumulate(all(v),0)
 #define UNIQUE(x) x.erase(unique(x.begin(), x.end()), x.end())
 #define fast ios_bfse::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define mod 1000000007
+// #define mod 1000000007
 #define si set<int>
 #define sc set<char>
 #define sst set<string>
@@ -49,34 +49,40 @@ using namespace std;
 #define Sst stack<string>
  #define readll(n) ll n; cin >> n
 #define readS(str) string str;  cin >> str
-
+const int mod= 1000000007;
 //---------------------------------------------------------------------------------------------------------------------
 int sumvector(vi &arr){
 int x = 0;
 REP(i,0,arr.size()) x += arr[i];
 return x;
 }
-//--------------------------------------------------------------------------------------------------------------------
+ll gcd(ll a, ll b) {
+return a == 0 ? b : gcd(b%a, a);
+}
+ll lcm(ll a, ll b) {
+return (a/gcd(a, b))*b;
+}
+//---------------------------------------------------------------------------------------------------------------------
 void sol(){
-  
-  int n; cin >> n;
-    
-  string str; cin >> str;
+  ll n,x; cin >> n>> x;
+  vi vec(n);
+  inp(i,0,n,vec);
 
-  vi freq;
-  si st;
-  for(auto x : str){
-        st.insert(x);
-        freq.pb(st.size());
+  vi dp(x+1, 0);
+  dp[0] = 1;
+  REPE(i,1,x){
+    REP(j,0,n){
+        if(vec[j] <= i) dp[i] =(dp[i] + (dp[i - vec[j]])) % mod;
+    }
   }
-    
-  print(sumvector(freq));
-
+  print(dp[x]);
 }
 int main(){
-  readll(t);
-  while(t--){
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    cin.tie(NULL);
+//   readll(t);
+//   while(t--){
       sol();
-  }
+//   }
   return 0;
 }

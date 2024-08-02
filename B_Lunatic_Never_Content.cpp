@@ -56,22 +56,40 @@ int x = 0;
 REP(i,0,arr.size()) x += arr[i];
 return x;
 }
-//--------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
+ll gcd(ll a, ll b) {
+	return a == 0 ? b : gcd(b%a, a);
+}
+ll lcm(ll a, ll b) {
+	return (a/gcd(a, b))*b;
+}
 void sol(){
-  
-  int n; cin >> n;
-    
-  string str; cin >> str;
+    int n; cin >> n;
+		
+    vll a(n);
+	inp(i,0,n,a)
+	
+    ll l = 0, r = n-1;
+	ll res = abs(a[r--] - a[l++]);
 
-  vi freq;
-  si st;
-  for(auto x : str){
-        st.insert(x);
-        freq.pb(st.size());
-  }
-    
-  print(sumvector(freq));
+	while(r-l>0) {
+        ll diff = abs(a[r--] - a[l++]);
+        if(diff) res = gcd(res, diff);
 
+
+        // if(res == 0) res = diff;
+        // else if(res != abs(a[r--] - a[l++]) && diff) {
+		// 	res = 1;
+		// 	break;
+		// }
+		// if(a[r] == a[l]) {
+		// 	r--; l++;
+		// 	continue;
+		// }
+        // res = lcm(res, abs(a[r--] - a[l++]));
+	}
+
+    print(res)
 }
 int main(){
   readll(t);

@@ -56,27 +56,34 @@ int x = 0;
 REP(i,0,arr.size()) x += arr[i];
 return x;
 }
-//--------------------------------------------------------------------------------------------------------------------
+ll gcd(ll a, ll b) {
+return a == 0 ? b : gcd(b%a, a);
+}
+ll lcm(ll a, ll b) {
+return (a/gcd(a, b))*b;
+}
+//---------------------------------------------------------------------------------------------------------------------
 void sol(){
-  
-  int n; cin >> n;
-    
-  string str; cin >> str;
+  ll n,x;
+  cin>>n>>x;
+  vi vec(n);
+  inp(i,0,n,vec);
 
-  vi freq;
-  si st;
-  for(auto x : str){
-        st.insert(x);
-        freq.pb(st.size());
+  vll dp(x+1, INT_MAX);
+  dp[0] = 0;
+
+  REPE(i,1,x){
+    REP(j,0,n){
+        if(vec[j] <= i) dp[i] = min(dp[i], (dp[i-vec[j]]) + 1) ;
+    }
+
   }
-    
-  print(sumvector(freq));
-
+    print((dp[x] < INT_MAX ? dp[x] : -1));
 }
 int main(){
-  readll(t);
-  while(t--){
+//   readll(t);
+//   while(t--){
       sol();
-  }
+//   }
   return 0;
 }

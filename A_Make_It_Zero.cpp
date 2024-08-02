@@ -39,7 +39,7 @@ using namespace std;
 #define MAX(v) *max_element(all(v))
 #define SUM(v) accumulate(all(v),0)
 #define UNIQUE(x) x.erase(unique(x.begin(), x.end()), x.end())
-#define fast ios_bfse::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 #define mod 1000000007
 #define si set<int>
 #define sc set<char>
@@ -56,24 +56,34 @@ int x = 0;
 REP(i,0,arr.size()) x += arr[i];
 return x;
 }
-//--------------------------------------------------------------------------------------------------------------------
+ll gcd(ll a, ll b) {
+return a == 0 ? b : gcd(b%a, a);
+}
+ll lcm(ll a, ll b) {
+return (a/gcd(a, b))*b;
+}
+//---------------------------------------------------------------------------------------------------------------------
+
+const int w = 2 * 1e5 + 100;
 void sol(){
-  
-  int n; cin >> n;
-    
-  string str; cin >> str;
-
-  vi freq;
-  si st;
-  for(auto x : str){
-        st.insert(x);
-        freq.pb(st.size());
-  }
-    
-  print(sumvector(freq));
-
+    int n,a[101];
+    cin >> n;
+	REP(i,0,n) cin >> a[i];
+	if(n%2==0){
+		cout<< 2<<endl;
+		cout<< 1 <<" "<< n <<endl;
+		cout<< 1 <<" "<< n <<endl;
+	}
+    else {
+		cout<< 4<<endl;
+		cout<< 1 <<" " << n-1<<endl;
+		cout<< 1 <<" " << n-1<<endl;
+		cout<< n-1 <<" "<< n<<endl;
+		cout<< n-1 <<" "<< n<<endl;
+    }
 }
 int main(){
+  fast;
   readll(t);
   while(t--){
       sol();
