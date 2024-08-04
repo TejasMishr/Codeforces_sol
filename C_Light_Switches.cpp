@@ -63,9 +63,35 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+void sol(){
+  ll n,k; cin>>n >> k;
+
+
+  vll vec(n,0);
+  inp(i,0,n,vec)
+  sort(all(vec));
+
+  REP(i,0,n){
+   ll maxi = vec.back(), diff = maxi - vec[i];
+   diff /= k;
+
+   diff += (diff % 2);
+   vec[i] += (diff * k);
+  }
+  sort(all(vec));
+//   trav(x,vec) cout<<x<<" ";
+
+
+  (vec[0] + k > vec.back()) ? cout<< (vec.back()) : cout<< -1;
+  nl;
+  
+  
+}
 int main(){
   fast;
-  int w;cin>>w;
-  print(((w>2 && w%2==0) ? "YES" : "NO")); 
+  readll(t);
+  while(t--){
+      sol();
+  }
   return 0;
 }

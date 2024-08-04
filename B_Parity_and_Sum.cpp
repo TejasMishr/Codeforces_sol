@@ -33,7 +33,7 @@ using namespace std;
 #define autoprint(a) for(auto i:a) cout<<i<<nl;
 #define trav(x,a) for(auto& x : a)
 //  Container bounds
-#define rall(c)rbegin(c),rend(c)
+#define rall(tmp)rbegin(tmp),rend(tmp)
 #define all(a) (a).begin(), (a).end()
 #define MIN(v) *min_element(all(v))
 #define MAX(v) *max_element(all(v))
@@ -63,9 +63,93 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+void sol() {
+
+
+    ll n; cin >> n; 
+    vll a(n);
+    ll od = 0, ev = 0;
+    REP(i, 0, n) cin >> a[i];
+
+    
+
+    
+    REP(i, 0, n) {
+        (a[i] % 2 == 1) ?  od = max(od, a[i]) : ev = max(ev, a[i]);
+    
+    }
+
+
+    sort(all(a));
+
+    int tmp=0;
+    bool chk = true;
+    REP(i, 1, n) {
+        if (a[i] % 2 != a[0] % 2) {
+            chk = false;
+            break;
+        }
+    }
+    // print(chk);
+
+
+    if (chk) {print(0); return;}
+
+     
+
+    
+   
+    REP(i, 0, n) {
+        if (a[i] % 2 == 0){
+            if(a[i] < od) {
+               a[i] =a[i] + od;
+               od = max(od, a[i]);
+               tmp++;
+            }
+        }
+        // print(tmp);
+    }
+
+    chk = true;
+
+    
+    REP(i, 1, n) {
+        if (a[i] % 2 != a[0] % 2) {
+            chk = false;
+            break;
+        }
+    }
+
+    if(chk) {
+        print(tmp);
+        // chk =false;
+        return;
+    }
+
+
+    ll idx = -1;
+    REP(i,0,n) {
+        if (a[i] % 2 == 1 && a[i] == od) {
+            idx = i;
+            chk=false;
+            break;
+        }
+    }
+
+    if (idx != -1) {
+        tmp++;
+        a[idx] = a[idx] + ev;
+    }
+
+    REP(i,0,n) if(a[i]%2 == 0) tmp++;
+
+    print(tmp);
+}
 int main(){
   fast;
-  int w;cin>>w;
-  print(((w>2 && w%2==0) ? "YES" : "NO")); 
+  readll(t);
+  while(t--){
+      sol();
+  }
   return 0;
 }

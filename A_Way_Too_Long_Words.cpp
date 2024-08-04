@@ -63,9 +63,17 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+void sol(){
+  string s; cin>>s;
+
+  if(s.length()>10) cout<<s[0]<<s.length()-2<<s[s.length()-1]<<endl;
+  else print(s);
+}
 int main(){
   fast;
-  int w;cin>>w;
-  print(((w>2 && w%2==0) ? "YES" : "NO")); 
+  readll(t);
+  while(t--){
+      sol();
+  }
   return 0;
 }

@@ -63,9 +63,39 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+void sol(){
+  int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+
+    sort(a.begin(), a.end());
+
+    int left = 0, right = n - k;
+    int ans = 0;
+    
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        int idx = (n - mid - 1) / 2 + mid;
+        
+        if (idx < n && a[idx] > ans) {
+            ans = a[idx];
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    cout << ans << endl;
+}
 int main(){
   fast;
-  int w;cin>>w;
-  print(((w>2 && w%2==0) ? "YES" : "NO")); 
+  readll(t);
+  while(t--){
+      sol();
+  }
   return 0;
 }

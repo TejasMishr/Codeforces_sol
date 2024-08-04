@@ -63,9 +63,39 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+void sol(){
+  int n; cin>>n;
+  string s; cin>>s;
+  int x = 0;
+  int cnt1 = 0, cnt2 = 0, cnt3 = 0, cnt4 = 0;
+  REP(i,0,s.length()){
+      if(s[i] == '?'){
+          x++;
+      }
+      else if(s[i]=='A') cnt1++;
+
+      else if(s[i]=='B') cnt2++;
+      else if(s[i]=='C') cnt3++;
+      else if(s[i]=='D') cnt4++;
+
+  } 
+   int maxi= 0;
+   maxi+= min(cnt1, n);
+   maxi+= min(cnt2, n);
+   maxi+= min(cnt3, n);
+   maxi+= min(cnt4, n);
+   print(maxi);
+
+//   cout<<" ANS : " <<cnt1+cnt2+cnt3+cnt4<<endl;
+
+//   cout<<x<<" "<<cnt1<<" "<<cnt2<<" "<<cnt3<<" "<<cnt4<<endl;
+  
+}
 int main(){
   fast;
-  int w;cin>>w;
-  print(((w>2 && w%2==0) ? "YES" : "NO")); 
+  readll(t);
+  while(t--){
+      sol();
+  }
   return 0;
 }

@@ -1,4 +1,3 @@
-// +########################################################################################+
 #include<bits/stdc++.h>
 using namespace std;
 // Code Shortners
@@ -63,9 +62,26 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+void sol(){
+    string s; cin>>s;
+ 
+    string res ="";
+ 
+    trav(c,s){
+        if(!(c == 'A' || c == 'a' || c == 'O' || c == 'o' || c == 'Y' || c == 'y' || c == 'E' || c == 'e' || c == 'U' || c == 'u' || c == 'I' || c == 'i')){
+                res += '.';
+                res += tolower(c);
+            }
+    }
+
+    print(res);
+}
 int main(){
   fast;
-  int w;cin>>w;
-  print(((w>2 && w%2==0) ? "YES" : "NO")); 
+//   readll(t);
+  int t = 1;
+  while(t--){
+      sol();
+  }
   return 0;
 }
