@@ -1,39 +1,94 @@
-#include <bits/stdc++.h>
+// +########################################################################################+
+#include<bits/stdc++.h>
 using namespace std;
-bool solve(vector<pair<long long, long long>>&a, long long n, long long s, long long m) {
+// Code Shortners
+#define ub upper_bound
+#define lb lower_bound
+#define ll long long
+#define lli long long int
+#define vi vector<int>
+#define vc vector<char>
+#define vs vector<string>
+#define vll vector<ll>
+#define vvi vector<vi>
+#define vvc vector<vector<char>>
+#define vvll vector<vector<ll>>
+#define vpll vector<pair<ll,ll>>
+#define pii pair<int,int>
+#define mll map<ll,ll>
+#define pll pair<ll, ll>
+#define F first
+#define S second
+#define pb push_back
+#define ppb pop_back
+#define pf  push_front
+#define ppf pop_front
+#define mpair make_pair
+#define len(s) (int)s.size()
+#define inp(i,a,b,vec) for(ll i = a; i < b; i++) cin>>vec[i];
+#define print(x) cout<<x<<endl;
+#define REP(i,a,b) for(ll i = a; i < b; i++)
+#define REPE(i,a,b) for(ll i = a; i <= b; i++)
+#define nl cout<<endl;
+#define autoprint(a) for(auto i:a) cout<<i<<nl;
+#define trav(x,a) for(auto& x : a)
+//  Container bounds
+#define rall(c)rbegin(c),rend(c)
+#define all(a) (a).begin(), (a).end()
+#define MIN(v) *min_element(all(v))
+#define MAX(v) *max_element(all(v))
+#define SUM(v) accumulate(all(v),0)
+#define UNIQUE(x) x.erase(unique(x.begin(), x.end()), x.end())
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define si set<int>
+#define sc set<char>
+#define sst set<string>
+#define Si stack<int>
+#define Sc stack<char>
+#define Sst stack<string>
+ #define readll(n) ll n; cin >> n
+#define readS(str) string str;  cin >> str
+const ll mod=1000000007;
+
+//---------------------------------------------------------------------------------------------------------------------
+int sumvector(vi &arr){
+int x = 0;
+REP(i,0,arr.size()) x += arr[i];
+return x;
+}
+ll gcd(ll a, ll b) {
+return a == 0 ? b : gcd(b%a, a);
+}
+ll lcm(ll a, ll b) {
+return (a/gcd(a, b))*b;
+}
+//---------------------------------------------------------------------------------------------------------------------
+
+bool solve(vector<pll>&arr, ll n, ll s, ll m) {
     
-    for (long long i = 1; i <a.size(); ++i) {
-        long long diff = a[i].first - a[i - 1].second;
-        if (diff>= s) {
-            return true;
-        }
+    REP(i, 1, arr.size()) {
+        ll diff = arr[i].F - arr[i - 1].S;
+        if (diff>= s) return true;
     }
     return false;
 }
-
-int main() {
-    int t;
-    cin >> t;
-
-    while (t--) {
-        long long n, s, m;
-        cin >> n >> s >> m;
-        vector<pair<long long, long long>>a(n);
-
-        for (int i = 0; i < n; ++i) 
-            cin >> a[i].first >> a[i].second;
-        
-        a.push_back({0,0});
-        a.push_back({m, m});
-        
-        sort(a.begin(), a.end());
-        
-        if (solve(a, n, s, m)) {
-            cout << "YES" << endl;
-        } else {
-            cout << "NO" << endl;
-        }
-    }
-
-    return 0;
+void sol(){
+  ll n, s, m; cin >> n >> s >> m;
+  vector<pll>vec(n);
+  REP(i, 0, n) cin >> vec[i].F >> vec[i].S;
+  vec.pb({0,0});
+  vec.pb({m, m});
+  sort(all(vec));
+  
+   print(((solve(vec, n, s, m)) ? "YES" : "NO"));
+           
+}
+int main(){
+  fast;
+  ll t=1;
+  cin>>t;
+  while(t--){
+      sol();
+  }
+  return 0;
 }
