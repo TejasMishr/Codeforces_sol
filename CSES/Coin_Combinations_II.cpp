@@ -40,7 +40,7 @@ using namespace std;
 #define SUM(v) accumulate(all(v),0)
 #define UNIQUE(x) x.erase(unique(x.begin(), x.end()), x.end())
 #define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define mod 1000000007
+
 #define si set<int>
 #define sc set<char>
 #define sst set<string>
@@ -63,42 +63,38 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+
+const ll mod = 1e9+7;
 void sol(){
-  ll n;cin>>n;
-  vs vec(n);
+  ll n,x; cin >> n>> x;
+  vi vec(n);
   inp(i,0,n,vec);
 
-  vvi dp(n, vi(n));
+  sort(all(vec));
 
-  (vec[n-1][n-1] == '.') ? dp[n-1][n-1] = 1 : dp[n-1][n-1] = 0;
+  vvi dp(n+1, vi(x+1));
+
+  REP(i,0,n+1) dp[i][0] = 1;
 
   for(int i=n-1;i>=0;i--){
-    for(int j=n-1;j>=0;j--){
+    for(int sum = 0;sum<=x;sum++){
+      ll skip= dp[i+1][sum];
+      ll take = 0;
 
-      if(i == n-1 && j == n-1) continue;
-
-      if(vec[i][j] == '*') dp[i][j] = 0;
-      else{
-        int ans1 = 0, ans2 = 0;
-        if(i < n-1) ans1= dp[i+1][j];
-        else ans1 = 0;
-        if(j < n-1) ans2 = dp[i][j+1];
-        else ans2 = 0;
-        dp[i][j] = (ans1 + ans2) % mod;
-      }
-
+      if(vec[i] <= sum) take = dp[i][sum-vec[i]];
+      dp[i][sum] = (skip + take) % mod;
     }
-  }
 
-  print(dp[0][0]);
-
+    
+  }  
+  print(dp[0][x]);
 }
 int main(){
-  fast;
-  ll t=1;
-  // cin>>t;
-  while(t--){
+    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    cin.tie(NULL);
+//   readll(t);
+//   while(t--){
       sol();
-  }
+//   }
   return 0;
 }

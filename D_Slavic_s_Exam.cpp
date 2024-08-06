@@ -40,7 +40,6 @@ using namespace std;
 #define SUM(v) accumulate(all(v),0)
 #define UNIQUE(x) x.erase(unique(x.begin(), x.end()), x.end())
 #define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define mod 1000000007
 #define si set<int>
 #define sc set<char>
 #define sst set<string>
@@ -49,6 +48,7 @@ using namespace std;
 #define Sst stack<string>
  #define readll(n) ll n; cin >> n
 #define readS(str) string str;  cin >> str
+const ll mod=1000000007;
 
 //---------------------------------------------------------------------------------------------------------------------
 int sumvector(vi &arr){
@@ -63,40 +63,65 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+
+bool chk(const string &s, const string &tmp) { 
+    int j = 0; 
+    for (int i = 0; i < s.size() && j < tmp.size(); ++i) { 
+        if (s[i] == tmp[j]) j+=1;
+    } 
+    return j == tmp.size(); 
+} 
+ 
 void sol(){
-  ll n;cin>>n;
-  vs vec(n);
-  inp(i,0,n,vec);
+    string s, tmp; cin >> s >>tmp; 
+    ll len = s.length();
+    
+    
+    vector<bool> vis(tmp.length(), false); 
+ 
+    // for (int i = 0; i < s.length(); ++i) { 
+    //     if (s[i] == '?') continue; 
+    //     for (int j = 0; j < tmp.length(); ++j) { 
+    //         if (s[i] == tmp[j]) vis[j] = true; 
+    //     } 
+    // }
+    ll i = 0, j = 0;
+    while (i < s.length() && j < tmp.length()) {
+        if (s[i] == '?') {
+            s[i] = tmp[j];
+            // print(s[i]);
+            vis[j] = true;
+            j++;
+        }
 
-  vvi dp(n, vi(n));
+        else if(s[i] == tmp[j]) {
+            j++;
+        }
 
-  (vec[n-1][n-1] == '.') ? dp[n-1][n-1] = 1 : dp[n-1][n-1] = 0;
 
-  for(int i=n-1;i>=0;i--){
-    for(int j=n-1;j>=0;j--){
-
-      if(i == n-1 && j == n-1) continue;
-
-      if(vec[i][j] == '*') dp[i][j] = 0;
-      else{
-        int ans1 = 0, ans2 = 0;
-        if(i < n-1) ans1= dp[i+1][j];
-        else ans1 = 0;
-        if(j < n-1) ans2 = dp[i][j+1];
-        else ans2 = 0;
-        dp[i][j] = (ans1 + ans2) % mod;
-      }
-
+        i++;
     }
-  }
 
-  print(dp[0][0]);
 
+    if(!chk(s, tmp)) {
+        print("NO"); 
+    }
+    else { 
+        for (char &x : s) { 
+            if (x == '?')  x = 'a';
+        } 
+            
+        print("YES");
+        print(s); 
+            
+    } 
 }
+
+
 int main(){
   fast;
   ll t=1;
-  // cin>>t;
+  cin>>t;
   while(t--){
       sol();
   }

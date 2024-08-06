@@ -40,7 +40,6 @@ using namespace std;
 #define SUM(v) accumulate(all(v),0)
 #define UNIQUE(x) x.erase(unique(x.begin(), x.end()), x.end())
 #define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-#define mod 1000000007
 #define si set<int>
 #define sc set<char>
 #define sst set<string>
@@ -49,6 +48,7 @@ using namespace std;
 #define Sst stack<string>
  #define readll(n) ll n; cin >> n
 #define readS(str) string str;  cin >> str
+const ll mod=1000000007;
 
 //---------------------------------------------------------------------------------------------------------------------
 int sumvector(vi &arr){
@@ -63,40 +63,49 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+const int N = 1e7+2;
+int dp[2][N];
+int vis[2][N];
+int go(int same, int steps){
+
+
+	if(steps == 1){
+		if(same) return 0;
+		return 1;
+	}
+
+	int ans = dp[same][steps];
+	if(vis[same][steps]) return ans;
+	vis[same][steps] = 1;
+
+
+	if(same == 1)  return ans = (3LL*go(1-same, steps-1))%mod;
+	else  return ans = (2LL*go(0, steps-1) + go(1, steps-1))%mod;
+}
 void sol(){
-  ll n;cin>>n;
-  vs vec(n);
-  inp(i,0,n,vec);
-
-  vvi dp(n, vi(n));
-
-  (vec[n-1][n-1] == '.') ? dp[n-1][n-1] = 1 : dp[n-1][n-1] = 0;
-
-  for(int i=n-1;i>=0;i--){
-    for(int j=n-1;j>=0;j--){
-
-      if(i == n-1 && j == n-1) continue;
-
-      if(vec[i][j] == '*') dp[i][j] = 0;
-      else{
-        int ans1 = 0, ans2 = 0;
-        if(i < n-1) ans1= dp[i+1][j];
-        else ans1 = 0;
-        if(j < n-1) ans2 = dp[i][j+1];
-        else ans2 = 0;
-        dp[i][j] = (ans1 + ans2) % mod;
-      }
-
-    }
-  }
-
-  print(dp[0][0]);
-
+    ll n; cin>>n;
+    dp[1][0] = 1;
+	for(int steps = 1; steps < N; steps++){
+		dp[1][steps] = (3LL*dp[0][steps-1])%mod;
+		dp[0][steps] = (2LL*dp[0][steps-1] + dp[1][steps-1])%mod;
+	}
+	cout << dp[1][n] << endl;
+//   print(go(1,n));
+//   if(n==1) print(0)
+//   else if(n==2) print(3)
+//   else{
+//     vll ans = {0, 3};
+//     REP(i,0,n-2){
+//         ans.pb((2*ans.back() + 3*ans[ans.size()-2])%mod);
+//         ans.erase(ans.begin());
+//     }
+//     print(ans.back());
+//   }
 }
 int main(){
   fast;
   ll t=1;
-  // cin>>t;
+//   cin>>t;
   while(t--){
       sol();
   }

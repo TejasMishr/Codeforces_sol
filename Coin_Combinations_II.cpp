@@ -64,39 +64,12 @@ return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
 void sol(){
-  ll n;cin>>n;
-  vs vec(n);
-  inp(i,0,n,vec);
-
-  vvi dp(n, vi(n));
-
-  (vec[n-1][n-1] == '.') ? dp[n-1][n-1] = 1 : dp[n-1][n-1] = 0;
-
-  for(int i=n-1;i>=0;i--){
-    for(int j=n-1;j>=0;j--){
-
-      if(i == n-1 && j == n-1) continue;
-
-      if(vec[i][j] == '*') dp[i][j] = 0;
-      else{
-        int ans1 = 0, ans2 = 0;
-        if(i < n-1) ans1= dp[i+1][j];
-        else ans1 = 0;
-        if(j < n-1) ans2 = dp[i][j+1];
-        else ans2 = 0;
-        dp[i][j] = (ans1 + ans2) % mod;
-      }
-
-    }
-  }
-
-  print(dp[0][0]);
-
+  
 }
 int main(){
   fast;
   ll t=1;
-  // cin>>t;
+  cin>>t;
   while(t--){
       sol();
   }
