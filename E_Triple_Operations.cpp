@@ -63,6 +63,12 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
+
+ll int_log(ll x, ll base) {
+    return (x == 1) ? 0 : 1 + int_log(x / base, base);
+}
+
+
 void sol(){
     int l, r; cin >> l >> r;
     vll pre(r, 0);
