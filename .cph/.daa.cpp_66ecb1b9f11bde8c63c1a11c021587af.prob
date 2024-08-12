@@ -1,0 +1,1 @@
+{"name":"Local: daa","url":"/Users/tejas_mishr/Desktop/cpp/daa.cpp","tests":[{"id":1723453654772,"input":"4\n1 3 2 4","output":"1 2 3 4"},{"id":1723454335231,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/tejas_mishr/Desktop/cpp/daa.cpp","group":"local","local":true}
