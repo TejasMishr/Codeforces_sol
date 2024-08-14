@@ -18,23 +18,37 @@ typedef pair<int, int> pi;
 int main(){
   ll t;cin>>t;
   while(t--) {
-        string s,res="";
-        cin>>s;
+        ll i,c1,c2;string a;cin>>a;
+		c1=0,c2=0;
+		for(i=0;i<a.size();i++){
+			if(a[i]=='0') c1++;
+			else c2++;
+		}
+		for(i=0;i<a.size();i++){
+			if(a[i]=='0') c2--;
+			else c1--;
+			if(c1<0||c2<0) break;
+		} 
+		if(c1<0) c1=0;
+		if(c2<0) c2=0;
+		print(c1+c2);
+        // string s,res="";
+        // cin>>s;
         
-        int tot0 =count(s.begin(), s.end(), '0'),tot1 = count(s.begin(), s.end(),'1');
-        for (char c :s) {
-            if (tot1<1 && c=='0') break;
-            else if(tot0<1 && c=='1') break;
-            if (c =='0' && tot1>0) {
-                tot1--;
-                res +='1';
-            } 
-            else if (tot0>0 && c=='1') {
-                tot0--;
-                res+='0';
-            }
-        }
-        cout<<abs(static_cast<int>(res.length()) - static_cast<int>(s.length()))<<'\n';
+        // int tot0 =count(s.begin(), s.end(), '0'),tot1 = count(s.begin(), s.end(),'1');
+        // for (char c :s) {
+        //     if (tot1<1 && c=='0') break;
+        //     else if(tot0<1 && c=='1') break;
+        //     if (c =='0' && tot1>0) {
+        //         tot1--;
+        //         res +='1';
+        //     } 
+        //     else if (tot0>0 && c=='1') {
+        //         tot0--;
+        //         res+='0';
+        //     }
+        // }
+        // cout<<abs(static_cast<int>(res.length()) - static_cast<int>(s.length()))<<'\n';
     }
   return 0;
 }
