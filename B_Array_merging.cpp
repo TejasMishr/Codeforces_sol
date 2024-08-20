@@ -64,44 +64,27 @@ return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
 
-const int N = 2e5+10;
-int n,q;
-vll val[N],prev[N][16], next[N][16];
-
-
-int idx(char c){
-    if(c == 'B') return 0;
-    if(c == 'G') return 1;
-    if(c == 'R') return 2;
-    return 3;
+void f(int a[], int n, map<int,int> &m){
+	int cur=1;
+	m[a[0]] = 1;
+	REP(i,1,n){ 
+		if(a[i]==a[i-1]) cur++;
+		else cur=1;
+		m[a[i]]=max(m[a[i]],cur);
+	}
 }
-
-
 void sol(){
-    cin>>n>>q;
-    REPE(i,1,n){
-        string str; cin >> str;
-        // val[i].resize(str.size());
-
-
-        val[i]= (1<<idx(str[0])) | (1<<idx(str[1]));
-        // val[i] = val[i] | (1<<idx(str[2]));
-
-        
-    }
-    REP(i,0,16){
-        prev[0][i] =nxt[n+1][i]=0;
-    }
-
-    REPE(i,1,n){
-        REP(j,0,16){
-            prev[i][j] = prev[i-1][j];
-        }
-
-        prev[i][val[i]]=i;
-    }
-
-    
+    int n; cin>>n;
+    int a[n],b[n];
+    REP(i,0,n) cin>>a[i];
+    REP(i,0,n) cin>>b[i];
+    // MAP
+	map<int,int> m,m1;
+    f(a,n,m);
+    f(b,n,m1);
+	int ans=1;
+	REPE(i,0,2*n) ans =max(ans,m[i] + m1[i]);
+    print(ans);
 }
 int main(){
   fast;

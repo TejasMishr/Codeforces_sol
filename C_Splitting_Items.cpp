@@ -85,7 +85,7 @@ void sol() {
         // ll val=vec[i]-vec[i-1];
         res += diff;
 
-        if (k > 0) {
+        if (k > 0){
            
             res -= min(k, abs(diff));
             // print(res);
