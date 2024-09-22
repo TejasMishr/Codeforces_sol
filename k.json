@@ -1,0 +1,233 @@
+[
+  {
+    "state_id": 11,
+    "state_name_en": "HIMACHAL PRADESH",
+    "primary_activity_count": 14,
+    "secondary_activity_count": 127,
+    "tertiary_activity_count": 219
+  },
+  {
+    "state_id": 10,
+    "state_name_en": "HARYANA",
+    "primary_activity_count": 18,
+    "secondary_activity_count": 173,
+    "tertiary_activity_count": 251
+  },
+  {
+    "state_id": 18,
+    "state_name_en": "MANIPUR",
+    "primary_activity_count": 25,
+    "secondary_activity_count": 139,
+    "tertiary_activity_count": 193
+  },
+  {
+    "state_id": 24,
+    "state_name_en": "PUNJAB",
+    "primary_activity_count": 22,
+    "secondary_activity_count": 161,
+    "tertiary_activity_count": 235
+  },
+  {
+    "state_id": 27,
+    "state_name_en": "TAMIL NADU",
+    "primary_activity_count": 19,
+    "secondary_activity_count": 149,
+    "tertiary_activity_count": 199
+  },
+  {
+    "state_id": 3,
+    "state_name_en": "ARUNACHAL PRADESH",
+    "primary_activity_count": 13,
+    "secondary_activity_count": 131,
+    "tertiary_activity_count": 179
+  },
+  {
+    "state_id": 30,
+    "state_name_en": "WEST BENGAL",
+    "primary_activity_count": 24,
+    "secondary_activity_count": 155,
+    "tertiary_activity_count": 221
+  },
+  {
+    "state_id": 33,
+    "state_name_en": "UTTARAKHAND",
+    "primary_activity_count": 15,
+    "secondary_activity_count": 141,
+    "tertiary_activity_count": 201
+  },
+  {
+    "state_id": 19,
+    "state_name_en": "MEGHALAYA",
+    "primary_activity_count": 27,
+    "secondary_activity_count": 169,
+    "tertiary_activity_count": 243
+  },
+  {
+    "state_id": 8,
+    "state_name_en": "GOA",
+    "primary_activity_count": 10,
+    "secondary_activity_count": 123,
+    "tertiary_activity_count": 165
+  },
+  {
+    "state_id": 2,
+    "state_name_en": "ANDHRA PRADESH",
+    "primary_activity_count": 12,
+    "secondary_activity_count": 137,
+    "tertiary_activity_count": 189
+  },
+  {
+    "state_id": 9,
+    "state_name_en": "GUJARAT",
+    "primary_activity_count": 20,
+    "secondary_activity_count": 151,
+    "tertiary_activity_count": 215
+  },
+  {
+    "state_id": 14,
+    "state_name_en": "KERALA",
+    "primary_activity_count": 17,
+    "secondary_activity_count": 143,
+    "tertiary_activity_count": 203
+  },
+  {
+    "state_id": 17,
+    "state_name_en": "LAKSHADWEEP",
+    "primary_activity_count": 11,
+    "secondary_activity_count": 129,
+    "tertiary_activity_count": 171
+  },
+  {
+    "state_id": 13,
+    "state_name_en": "KARNATAKA",
+    "primary_activity_count": 23,
+    "secondary_activity_count": 163,
+    "tertiary_activity_count": 239
+  },
+  {
+    "state_id": 16,
+    "state_name_en": "MAHARASHTRA",
+    "primary_activity_count": 21,
+    "secondary_activity_count": 157,
+    "tertiary_activity_count": 227
+  },
+  {
+    "state_id": 22,
+    "state_name_en": "ODISHA",
+    "primary_activity_count": 26,
+    "secondary_activity_count": 175,
+    "tertiary_activity_count": 253
+  },
+  {
+    "state_id": 34,
+    "state_name_en": "TELANGANA",
+    "primary_activity_count": 16,
+    "secondary_activity_count": 147,
+    "tertiary_activity_count": 211
+  },
+  {
+    "state_id": 26,
+    "state_name_en": "SIKKIM",
+    "primary_activity_count": 19,
+    "secondary_activity_count": 153,
+    "tertiary_activity_count": 217
+  },
+  {
+    "state_id": 35,
+    "state_name_en": "LADAKH",
+    "primary_activity_count": 12,
+    "secondary_activity_count": 135,
+    "tertiary_activity_count": 183
+  },
+  {
+    "state_id": 20,
+    "state_name_en": "MIZORAM",
+    "primary_activity_count": 25,
+    "secondary_activity_count": 167,
+    "tertiary_activity_count": 241
+  },
+  {
+    "state_id": 25,
+    "state_name_en": "RAJASTHAN",
+    "primary_activity_count": 18,
+    "secondary_activity_count": 159,
+    "tertiary_activity_count": 229
+  },
+  {
+    "state_id": 4,
+    "state_name_en": "ASSAM",
+    "primary_activity_count": 15,
+    "secondary_activity_count": 145,
+    "tertiary_activity_count": 209
+  },
+  {
+    "state_id": 28,
+    "state_name_en": "TRIPURA",
+    "primary_activity_count": 24,
+    "secondary_activity_count": 165,
+    "tertiary_activity_count": 237
+  },
+  {
+    "state_id": 5,
+    "state_name_en": "BIHAR",
+    "primary_activity_count": 13,
+    "secondary_activity_count": 133,
+    "tertiary_activity_count": 181
+  },
+  {
+    "state_id": 15,
+    "state_name_en": "MADHYA PRADESH",
+    "primary_activity_count": 22,
+    "secondary_activity_count": 161,
+    "tertiary_activity_count": 235
+  },
+  {
+    "state_id": 29,
+    "state_name_en": "UTTAR PRADESH",
+    "primary_activity_count": 20,
+    "secondary_activity_count": 155,
+    "tertiary_activity_count": 221
+  },
+  {
+    "state_id": 31,
+    "state_name_en": "CHHATTISGARH",
+    "primary_activity_count": 19,
+    "secondary_activity_count": 149,
+    "tertiary_activity_count": 199
+  },
+  {
+    "state_id": 12,
+    "state_name_en": "JAMMU AND KASHMIR",
+    "primary_activity_count": 16,
+    "secondary_activity_count": 147,
+    "tertiary_activity_count": 211
+  },
+  {
+    "state_id": 23,
+    "state_name_en": "PUDUCHERRY",
+    "primary_activity_count": 11,
+    "secondary_activity_count": 125,
+    "tertiary_activity_count": 169
+  },
+  {
+    "state_id": 36,
+    "state_name_en": "DNH AND DAMAN DIU",
+    "primary_activity_count": 10,
+    "secondary_activity_count": 121,
+    "tertiary_activity_count": 165
+  },
+  {
+    "state_id": 32,
+    "state_name_en": "JHARKHAND",
+    "primary_activity_count": 21,
+    "secondary_activity_count": 159,
+    "tertiary_activity_count": 229
+  },
+  {
+    "state_id": 21,
+    "state_name_en": "NAGALAND",
+    "primary_activity_count": 27,
+    "secondary_activity_count": 173,
+    "tertiary_activity_count": 243
+  }
+]

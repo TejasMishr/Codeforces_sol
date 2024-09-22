@@ -68,32 +68,55 @@ int a[N],b[N];
 int t,n,xx,maxn;
 int edge1[N],edge2[N],tot;
 set<pii> st;
-void dfs(int x,int y){
-	if(st.count(make_pair(x,y))) return;
-	st.insert(make_pair(x,y));
-	cout<<"? "<<x<<' '<<y<<endl;
-	cin>>xx;
-	if(xx==-1) exit(1);
-	if(xx==x) 
-	{
-		edge1[++tot]=x;
-		edge2[tot]=y;
-		return;
-	}
-	dfs(x,xx),dfs(xx,y);
-}
-void solve(){
+// void dfs(int x,int y){
+// 	if(st.count(make_pair(x,y))) return;
+// 	st.insert(make_pair(x,y));
+// 	cout<<"? "<<x<<' '<<y<<endl;
+// 	cin>>xx;
+// 	if(xx==-1) exit(1);
+// 	if(xx==x) 
+// 	{
+// 		edge1[++tot]=x;
+// 		edge2[tot]=y;
+// 		return;
+// 	}
+// 	dfs(x,xx),dfs(xx,y);
+// }
+// void solve(){
+//     int n;
+//     cin >> n;
+//     REPE(i,2,n) a[i] = b[i] = 0;
+//     tot = 0;
+//     st.clear();
+//     for(int i = 2; i<=n;i++) {
+//         dfs(1, i);
+//     }
+//     cout << "! ";
+//     REPE(i,1,n-1) cout << edge1[i] << " " << edge2[i] << " ";
+//     cout << endl;
+// }
+
+ll vec[100005];
+ 
+void solve()
+{
     int n;
-    cin >> n;
-    REPE(i,2,n) a[i] = b[i] = 0;
-    tot = 0;
-    st.clear();
-    for(int i = 2; i <= n; i++) {
-        dfs(1, i);
+    cin>>n;
+ 
+    REPE(i,2,n){
+        int x=1;
+        while(x!=i)
+        {
+            vec[i]=x;
+            cout<<"? "<<i<<" "<<vec[i]<<endl;
+            cin>>x;
+        }
     }
-    cout << "! ";
-    REPE(i,1,n-1) cout << edge1[i] << " " << edge2[i] << " ";
-    cout << endl;
+ 
+    cout<<"! ";
+    REPE(i,2,n) cout<<vec[i]<<" "<<i<<" ";
+    
+    cout<<endl;
 }
 int main(){
     fast;

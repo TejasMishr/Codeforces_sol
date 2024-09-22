@@ -391,7 +391,9 @@ int main(){
 	REP(i,2,n){
 		ans = __gcd(ans,dif[i]);
 	}
-	cout<<ans<<"\n";
+	print(ans);
   }
   return 0;
 }
+
+
