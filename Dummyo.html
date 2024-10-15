@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seating Arrangement Visualization</title>
+    <style>
+      .class-container {
+        margin-bottom: 30px;
+      }
+      table {
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      td {
+        border: 1px solid black;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .branch1 {
+        background-color: #ffd700;
+      } /* Gold */
+      .branch2 {
+        background-color: #ff6347;
+      } /* Tomato */
+      .branch3 {
+        background-color: #87ceeb;
+      } /* SkyBlue */
+      .branch4 {
+        background-color: #90ee90;
+      } /* LightGreen */
+    </style>
+  </head>
+  <body>
+    <h1>Seating Arrangement</h1>
+
+    <div id="seatingArrangement"></div>
+
+    <script>
+      // Function to check if placing a branch at (row, col) is valid
+      function isValidPlacement(grid, row, col, branch) {
+        const directions = [
+          [-1, -1],
+          [-1, 0],
+          [-1, 1], // top left, top, top right
+          [0, -1],
+          [0, 1], // left,          , right
+          [1, -1],
+          [1, 0],
+          [1, 1], // bottom left, bottom, bottom right
+        ];
+
+        // Check all directions for adjacent branches
+        for (let [dx, dy] of directions) {
+          const newRow = row + dx;
+          const newCol = col + dy;
+
+          // Check bounds
+          if (
+            newRow >= 0 &&
+            newRow < grid.length &&
+            newCol >= 0 &&
+            newCol < grid[0].length
+          ) {
+            if (grid[newRow][newCol] === branch) {
+              return false; // Invalid placement
+            }
+          }
+        }
+        return true; // Valid placement
+      }
+
+      // Generate seating arrangement
+      function generateSeatingArrangement(branchWiseStudents, classes) {
+        const seatingDiv = document.getElementById("seatingArrangement");
+
+        classes.forEach((classroom) => {
+          const classContainer = document.createElement("div");
+          classContainer.className = "class-container";
+
+          // Class title
+          const classTitle = document.createElement("h2");
+          classTitle.textContent = `Class ${classroom.class_id} (Capacity: ${classroom.capacity})`;
+          classContainer.appendChild(classTitle);
+
+          // Create a grid for seating arrangement
+          const grid = Array.from({ length: classroom.rows }, () =>
+            Array(classroom.columns).fill(null)
+          );
+          const totalSeats = classroom.rows * classroom.columns;
+
+          // Place students in the grid
+          let studentCount = 0;
+          branchWiseStudents.forEach((branch) => {
+            for (
+              let i = 0;
+              i < totalSeats && studentCount < branch.total_students;
+              i++
+            ) {
+              for (let row = 0; row < classroom.rows; row++) {
+                for (let col = 0; col < classroom.columns; col++) {
+                  if (
+                    grid[row][col] === null &&
+                    isValidPlacement(grid, row, col, branch.name)
+                  ) {
+                    grid[row][col] = branch.name; // Place student
+                    studentCount++;
+                    break; // Break to avoid placing multiple students in the same iteration
+                  }
+                }
+                if (studentCount >= branch.total_students) break; // Stop if we've placed enough students
+              }
+            }
+          });
+
+          // Create a table for the seating arrangement
+          const table = document.createElement("table");
+          for (let row = 0; row < classroom.rows; row++) {
+            const tr = document.createElement("tr");
+            for (let col = 0; col < classroom.columns; col++) {
+              const td = document.createElement("td");
+              td.textContent = grid[row][col] || ""; // Display branch name or empty
+              td.className = grid[row][col] ? grid[row][col].toLowerCase() : ""; // Set class for styling
+              tr.appendChild(td);
+            }
+            table.appendChild(tr);
+          }
+          classContainer.appendChild(table);
+          seatingDiv.appendChild(classContainer);
+        });
+      }
+
+      // Get data from user
+      const numBranches = parseInt(prompt("Enter the number of branches:"));
+      const branchWiseStudents = [];
+      for (let i = 0; i < numBranches; i++) {
+        const branchName = prompt(`Enter the name of branch ${i + 1}:`);
+        const branchTotalStudents = parseInt(
+          prompt(`Enter the total students in ${branchName}:`)
+        );
+        branchWiseStudents.push({
+          name: branchName,
+          total_students: branchTotalStudents,
+        });
+      }
+
+      const numClasses = parseInt(prompt("Enter the number of classes:"));
+      const classes = [];
+      for (let i = 0; i < numClasses; i++) {
+        const classId = prompt(`Enter the id of class ${i + 1}:`);
+        const classCapacity = parseInt(
+          prompt(`Enter the capacity of class ${classId}:`)
+        );
+        const classRows = parseInt(
+          prompt(`Enter the number of rows in class ${classId}:`)
+        );
+        const classColumns = parseInt(
+          prompt(`Enter the number of columns in class ${classId}:`)
+        );
+        classes.push({
+          class_id: classId,
+          capacity: classCapacity,
+          rows: classRows,
+          columns: classColumns,
+        });
+      }
+
+      // Call the function to generate seating
+      generateSeatingArrangement(branchWiseStudents, classes);
+    </script>
+  </body>
+</html>
