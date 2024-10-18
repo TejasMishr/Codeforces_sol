@@ -64,29 +64,7 @@ return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
 void sol(){
-        string a,b;cin>>a>>b;
-        int n=a.length();
-        string c,d;
-        int cnt=0;
-        while(a[cnt]==b[cnt] && cnt<n-1){
-            c+=a[cnt];
-            d+=b[cnt];
-            cnt++;
-        }
-        c+=a[cnt];
-        d+=b[cnt];
-        bool flag=(a[cnt] < b[cnt]);
-        REP(i,cnt+1,n){
-            if(flag){
-                c+=max(a[i],b[i]);
-                d+=min(a[i],b[i]);
-            }
-            else{
-                d+=max(a[i],b[i]);
-                c+=min(a[i],b[i]);
-            }
-        }
-        cout << c << endl << d << endl;
+  
 }
 int main(){
   fast;

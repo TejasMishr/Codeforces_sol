@@ -51,9 +51,9 @@ using namespace std;
 const ll mod=1000000007;
 
 //---------------------------------------------------------------------------------------------------------------------
-int sumvector(vi &arr){
-int x = 0;
-REP(i,0,arr.size()) x += arr[i];
+ll sumvector(vll vec){
+ll x = 0;
+REP(i,0,vec.size()) x += vec[i];
 return x;
 }
 ll gcd(ll a, ll b) {
@@ -64,29 +64,18 @@ return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
 void sol(){
-        string a,b;cin>>a>>b;
-        int n=a.length();
-        string c,d;
-        int cnt=0;
-        while(a[cnt]==b[cnt] && cnt<n-1){
-            c+=a[cnt];
-            d+=b[cnt];
-            cnt++;
-        }
-        c+=a[cnt];
-        d+=b[cnt];
-        bool flag=(a[cnt] < b[cnt]);
-        REP(i,cnt+1,n){
-            if(flag){
-                c+=max(a[i],b[i]);
-                d+=min(a[i],b[i]);
-            }
-            else{
-                d+=max(a[i],b[i]);
-                c+=min(a[i],b[i]);
-            }
-        }
-        cout << c << endl << d << endl;
+    ll n,x;
+    cin>>n>>x;
+    ll res = 0;
+    vll cars(n);
+    inp(i,0,n,cars);
+    ll sum = sumvector(cars);
+
+    sort(all(cars));
+    ll maxi = cars[n-1];
+    if(((sum+x-1)/x) > maxi) res+=(sum+x-1)/x;
+    else res=maxi;
+    print(res);
 }
 int main(){
   fast;

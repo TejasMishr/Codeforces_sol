@@ -63,37 +63,31 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
-void sol(){
-        string a,b;cin>>a>>b;
-        int n=a.length();
-        string c,d;
-        int cnt=0;
-        while(a[cnt]==b[cnt] && cnt<n-1){
-            c+=a[cnt];
-            d+=b[cnt];
-            cnt++;
-        }
-        c+=a[cnt];
-        d+=b[cnt];
-        bool flag=(a[cnt] < b[cnt]);
-        REP(i,cnt+1,n){
-            if(flag){
-                c+=max(a[i],b[i]);
-                d+=min(a[i],b[i]);
-            }
-            else{
-                d+=max(a[i],b[i]);
-                c+=min(a[i],b[i]);
-            }
-        }
-        cout << c << endl << d << endl;
+ll sol(){
+    ll n,r;
+    cin>>n>>r;
+    ll od=0,ans=0;
+    REP(i,0,n){
+        ll curr=0;cin>>curr;
+        if((curr%2)) od++,curr--;
+        ans+=curr; r-=(curr/2);
+
+        // print(ans);
+
+    }
+    ans+=od;
+    if(od>=r) od-=r, ans-=(od*2);
+
+
+
+    return ans;
 }
 int main(){
   fast;
   ll t=1;
   cin>>t;
   while(t--){
-      sol();
+      print(sol());
   }
   return 0;
 }
