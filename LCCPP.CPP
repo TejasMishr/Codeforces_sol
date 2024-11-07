@@ -10,7 +10,6 @@ public:
         for (int i = 0; i < k; ++i) {
             vector<int> nxt(n, 0);
             
-            
             for (int j = 0; j < n; ++j) {
                 nxt[j] = max(nxt[j], dp[i][j] + src[i][j]);
 
