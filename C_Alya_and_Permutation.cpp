@@ -63,30 +63,42 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
-int sol(){
-    int n,k; cin>>n>>k; 
-    vi v(n+1);
-    REPE(i,1,n){
-        cin>>v[i];
-        v[i] += v[i-1];
-    }
-    int sum = INT_MAX;
-    int idx;
-    REPE(i,k,n){
-        int sum2 = v[i]-v[i-k];
-        if(sum>sum2){
-            sum = sum2;
-            idx = i;
-        }
-    }
-    return idx-k+1;
+void sol(){
+  int n;
+	cin>>n;
+	if(n%2){
+		print(n)
+		for(int i=2;i<n-1;i++) cout<<i<<" ";
+		cout<<1<<" "<<n-1<<" "<<n<<endl;
+	}
+	else{
+	//	cout<<pow(2,n/4+2)-1<<endl;
+		int j=0;
+		if(n==6){
+			print(7)
+			print("1 2 4 6 5 3")
+			return ;
+		}
+		while(1){
+			j++;
+			if(pow(2,j)>n){
+				print(pow(2,j)-1)
+				for(int i=2;i<n;i++){
+					if(i!=(pow(2,j-1)-2)&&i!=(pow(2,j-1)-1)&&i!=3){
+						cout<<i<<" ";}
+				}
+				cout<<3<<" "<<1<<" "<<pow(2,j-1)-2<<" "<<pow(2,j-1)-1<<" "<<n<<endl;
+				break;
+			}
+		}
+	}
 }
 int main(){
   fast;
   ll t=1;
-  // cin>>t;
+  cin>>t;
   while(t--){
-      print(sol());
+      sol();
   }
   return 0;
 }

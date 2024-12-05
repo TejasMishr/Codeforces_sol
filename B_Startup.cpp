@@ -63,30 +63,24 @@ ll lcm(ll a, ll b) {
 return (a/gcd(a, b))*b;
 }
 //---------------------------------------------------------------------------------------------------------------------
-int sol(){
-    int n,k; cin>>n>>k; 
-    vi v(n+1);
-    REPE(i,1,n){
-        cin>>v[i];
-        v[i] += v[i-1];
+void sol(){
+    ll n, k; cin >> n >> k;
+    vll a(k, 0);
+    REP(i, 0, k){
+        ll bi, ci; cin >> bi >> ci;
+        a[bi-1] += ci;
     }
-    int sum = INT_MAX;
-    int idx;
-    REPE(i,k,n){
-        int sum2 = v[i]-v[i-k];
-        if(sum>sum2){
-            sum = sum2;
-            idx = i;
-        }
-    }
-    return idx-k+1;
+    sort(a.rbegin(), a.rend());
+    ll m = 0;
+    REP(i, 0,min(k, n)) m += a[i];
+    print(m);
 }
 int main(){
   fast;
   ll t=1;
-  // cin>>t;
+  cin>>t;
   while(t--){
-      print(sol());
+      sol();
   }
   return 0;
 }
